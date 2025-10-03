@@ -1,4 +1,4 @@
-import React from "react";
+
 import FluerNavbar from "../../components/fleur/FluerNavbar";
 
 const FleurHome = () => {

@@ -1,4 +1,4 @@
-import React from "react";
+
 import FleurFooter from "../components/fleur/FleurFooter";
 import { Outlet } from "react-router-dom";
 
