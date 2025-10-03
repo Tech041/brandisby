@@ -32,7 +32,7 @@ const Footer = () => {
               <ul className="text-gray-300 flex flex-col md:items-center gap-2">
                 {desktopNavLinks.map((link) => (
                   <li key={link.name} className="">
-                    <Link className="underline" to={link.name}>
+                    <Link className=" text-sm md:text-base" to={link.name}>
                       {link.name}
                     </Link>
                   </li>
@@ -59,7 +59,7 @@ const Footer = () => {
           </div>
           {/* lower */}
           <div className="">
-            <p className="text-lg text-gray-500 text-center">
+            <p className="text-sm md:text-lg text-gray-500 text-center">
               &copy; [{new Date().getFullYear()}] Brandisby. All Rights
               Reserved.{" "}
             </p>

@@ -3,7 +3,7 @@ import Container from "./Container";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   return (
     <section className=" w-full h-screen bg-black text-white pt-20 flex items-center justify-center ">
       <Container>
