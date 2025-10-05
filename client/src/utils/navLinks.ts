@@ -35,3 +35,37 @@ export const mobileNavLinks = [
     path: "/register",
   },
 ];
+
+export const fleurmobileNavLinks = [
+  {
+    name: "Home",
+    path: "/fleurdevie/home",
+  },
+  {
+    name: "About",
+    path: "/fleurdevie/about",
+  },
+  {
+    name: "Shop",
+    path: "/shop",
+  },
+  {
+    name: "Contact",
+    path: "/fleurdevie/contact",
+  },
+];
+
+export const fleurNavigation = [
+  {
+    name: "About",
+    path: "/fleur/about",
+  },
+  {
+    name: "Shop",
+    path: "/fleur/shop",
+  },
+  {
+    name: "Contact Us",
+    path: "fleur/contact",
+  },
+];

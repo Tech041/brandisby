@@ -1,4 +1,3 @@
-
 import { FaTiktok } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa6";
@@ -18,7 +17,7 @@ const Footer = () => {
           {/* upper */}
           <div className="flex flex-col md:flex-row justify-center">
             <div className="flex-1">
-              <div className="w-[100px] h-[50px] rounded-md overflow-hidden">
+              <div className=" w-[85px] h-[50px] md:w-[100px] md:h-[50px] rounded-md overflow-hidden">
                 <img
                   src="/images/logo.webp"
                   className="w-full h-full object-cover"
