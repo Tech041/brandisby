@@ -3,7 +3,7 @@ import Container from "../Container";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useUiStore } from "../../store/UiStore";
-import { fleurmobileNavLinks } from "../../utils/navLinks";
+import { seracmobileNavLinks } from "../../utils/navLinks";
 const navLinks = [
   {
     name: "About Us",
@@ -40,7 +40,7 @@ const SeracNavbar = () => {
           </div>
 
           <div className="flex-1">
-            <h1 className=" font-bold text-3xl md:text-5xl text-yellow-600">
+            <h1 className=" font-bold text-3xl md:text-5xl text-white">
               Sérac
             </h1>
           </div>
@@ -88,7 +88,7 @@ const SeracNavbar = () => {
             } absolute  top-0  h-screen flex flex-col space-y-10  bg-white text-yellow-600 px-8  z-30`}
           >
             <ul className=" h-screen flex flex-col  items-center justify-center gap-4 ">
-              {fleurmobileNavLinks.map((link) => (
+              {seracmobileNavLinks.map((link) => (
                 <li key={link.name} className="py-3 text-2xl font-bold">
                   <Link to={link.path}>{link.name}</Link>
                 </li>

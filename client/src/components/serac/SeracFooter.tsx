@@ -63,9 +63,7 @@ const SeracFooter = () => {
           {/* lower */}
           <div className="">
             <p className="text-sm md:text-lg  text-center">
-              &copy; [{new Date().getFullYear()}]{" "}
-              <span className="text-yellow-600">Sérac</span> . All Rights
-              Reserved.{" "}
+              &copy; [{new Date().getFullYear()}] Sérac . All Rights Reserved.{" "}
             </p>
           </div>
         </div>

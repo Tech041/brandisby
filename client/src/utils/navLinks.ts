@@ -47,11 +47,30 @@ export const fleurmobileNavLinks = [
   },
   {
     name: "Shop",
-    path: "/shop",
+    path: "/fleurdevie/shop",
   },
   {
     name: "Contact",
     path: "/fleurdevie/contact",
+  },
+];
+
+export const seracmobileNavLinks = [
+  {
+    name: "Home",
+    path: "/serac/home",
+  },
+  {
+    name: "About",
+    path: "/serac/about",
+  },
+  {
+    name: "Shop",
+    path: "serac//shop",
+  },
+  {
+    name: "Contact",
+    path: "/serac/contact",
   },
 ];
 
