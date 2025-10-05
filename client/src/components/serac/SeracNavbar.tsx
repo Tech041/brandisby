@@ -29,16 +29,20 @@ const SeracNavbar = () => {
           {/* logo */}
           <div className="flex-1">
             <div className="w-[200px] h-[120px] rounded-md overflow-hidden">
-              <img
-                src="/images/serac_logo.webp"
-                className="w-full h-full object-cover"
-                alt="logo"
-              />
+              <Link className="w-full h-full" to={"/serac/home"}>
+                <img
+                  src="/images/serac_logo.webp"
+                  className="w-full h-full object-cover"
+                  alt="logo"
+                />
+              </Link>
             </div>
           </div>
 
           <div className="flex-1">
-            <h1 className=" font-bold text-3xl md:text-5xl text-yellow-600">Sérac</h1>
+            <h1 className=" font-bold text-3xl md:text-5xl text-yellow-600">
+              Sérac
+            </h1>
           </div>
           <div className="flex-1">
             <ul className="flex items-center gap-5">
@@ -58,7 +62,7 @@ const SeracNavbar = () => {
           <div className="w-full h-full flex justify-between items-center  ">
             <div className="flex-1  cursor-pointer ">
               <div className="w-[100px] h-[50px] rounded-md overflow-hidden">
-                <Link to={"/"}>
+                <Link to={"/serac/home"}>
                   <img
                     src="/images/serac_logo.webp"
                     className="w-full h-full object-cover"

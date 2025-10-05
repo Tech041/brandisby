@@ -19,11 +19,13 @@ const SeracFooter = () => {
           <div className="flex flex-col md:flex-row justify-center">
             <div className="flex-1">
               <div className=" md:w-[200px] md:h-[120px] w-[100px] h-[50px] rounded-md overflow-hidden">
-                <img
-                  src="/images/serac_logo.webp"
-                  className="w-full h-full object-cover"
-                  alt="logo"
-                />
+                <Link className="w-full h-full" to={"/serac/home"}>
+                  <img
+                    src="/images/serac_logo.webp"
+                    className="w-full h-full object-cover"
+                    alt="logo"
+                  />
+                </Link>
               </div>
             </div>
             <div className="flex-1 pb-2">

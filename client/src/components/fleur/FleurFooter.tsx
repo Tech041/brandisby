@@ -19,11 +19,13 @@ const FleurFooter = () => {
           <div className="flex flex-col md:flex-row justify-center">
             <div className="flex-1">
               <div className=" md:w-[200px] md:h-[120px] w-[100px] h-[50px] rounded-md overflow-hidden">
-                <img
-                  src="/images/fleur_logo.webp"
-                  className="w-full h-full object-cover"
-                  alt="logo"
-                />
+                <Link className="w-full h-full" to={"/fleurdevie/home"}>
+                  <img
+                    src="/images/fleur_logo.webp"
+                    className="w-full h-full object-cover"
+                    alt="logo"
+                  />
+                </Link>
               </div>
             </div>
             <div className="flex-1 pb-2">

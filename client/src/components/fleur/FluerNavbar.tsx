@@ -29,11 +29,13 @@ const FluerNavbar = () => {
           {/* logo */}
           <div className="flex-1">
             <div className="w-[200px] h-[120px] rounded-md overflow-hidden">
-              <img
-                src="/images/fleur_logo.webp"
-                className="w-full h-full object-cover"
-                alt="logo"
-              />
+              <Link className="w-full h-full" to={"/fleurdevie/home"}>
+                <img
+                  src="/images/fleur_logo.webp"
+                  className="w-full h-full object-cover"
+                  alt="logo"
+                />
+              </Link>
             </div>
           </div>
 
@@ -58,7 +60,7 @@ const FluerNavbar = () => {
           <div className="w-full h-full flex justify-between items-center  ">
             <div className="flex-1  cursor-pointer ">
               <div className="w-[100px] h-[50px] rounded-md overflow-hidden">
-                <Link to={"/"}>
+                <Link className="w-full h-full" to={"/fleurdevie/home"}>
                   <img
                     src="/images/fleur_logo.webp"
                     className="w-full h-full object-cover"
