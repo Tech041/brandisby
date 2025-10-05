@@ -1,11 +1,15 @@
 export const desktopNavLinks = [
   {
-    name: "Home",
-    path: "/",
+    name: "About ",
+    path: "/about",
   },
   {
-    name: "About Us",
-    path: "/about",
+    name: "Programs",
+    path: "/program",
+  },
+  {
+    name: "Press",
+    path: "/press",
   },
   {
     name: "Contact",
@@ -15,12 +19,16 @@ export const desktopNavLinks = [
 
 export const mobileNavLinks = [
   {
-    name: "Home",
-    path: "/",
+    name: "About ",
+    path: "/about",
   },
   {
-    name: "About Us",
-    path: "/about",
+    name: "Programs",
+    path: "/program",
+  },
+  {
+    name: "Press",
+    path: "/press",
   },
   {
     name: "Contact",

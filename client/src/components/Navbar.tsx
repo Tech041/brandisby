@@ -1,7 +1,4 @@
-
 import Container from "./Container";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { IoCloseSharp } from "react-icons/io5";
 import { desktopNavLinks, mobileNavLinks } from "../utils/navLinks";
 import { Link } from "react-router-dom";
 import { useUiStore } from "../store/UiStore";
@@ -9,7 +6,11 @@ import { useUiStore } from "../store/UiStore";
 const Navbar = () => {
   const { toggleMobileNav, isMobileNavOpen } = useUiStore();
   return (
-    <header className="w-full h-[80px] flex items-center bg-black text-white fixed border-b border-b-gray-700">
+    <header
+      className={`w-full h-[80px] flex items-center text-white  ${
+        isMobileNavOpen ? "fixed" : ""
+      }  `}
+    >
       <Container>
         {/* Desktop navbar */}
         <div className="hidden  w-full h-full md:flex justify-between items-center">
@@ -22,10 +23,12 @@ const Navbar = () => {
           </div>
           {/* NavLinks */}
           <div className="flex items-center justify-center">
-            <ul className="flex items-center gap-4 ">
+            <ul className="flex items-center gap-6 text-black ">
               {desktopNavLinks.map((link) => (
                 <li key={link.name} className="">
-                  <Link className="text-lg font-semibold" to={link.path}>{link.name}</Link>
+                  <Link className="text-sm font-semibold" to={link.path}>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -33,13 +36,16 @@ const Navbar = () => {
           {/* Buttons */}
           <div className="flex items-center gap-5">
             <div className="">
-              <Link className="hover:text-yellow-500 text-lg font-semibold" to={"/login"}>
+              <Link
+                className="hover:text-black text-sm font-semibold"
+                to={"/login"}
+              >
                 Login
               </Link>
             </div>
             <div className="">
               <Link
-                className="px-6 py-3 bg-yellow-500 rounded-md text-lg font-semibold hover:bg-yellow-400 "
+                className="px-6 py-4 bg-yellow-400  text-sm font-semibold hover:bg-white "
                 to={"/register"}
               >
                 Join Now
@@ -64,20 +70,36 @@ const Navbar = () => {
             </div>
             <div
               onClick={toggleMobileNav}
-              className="flex-1 flex justify-end cursor-pointer "
+              className="flex justify-end items-center cursor-pointer z-50 w-10 h-10 relative"
             >
-              {isMobileNavOpen ? (
-                <IoCloseSharp size={30} color="white" />
-              ) : (
-                <GiHamburgerMenu size={30} color="white" />
-              )}
+              <div className="relative w-10 h-6">
+                <span
+                  className={`block absolute h-0.5 w-full bg-white transform transition duration-300 ease-in-out
+        ${isMobileNavOpen ? "rotate-45 top-2.5 bg-black" : "top-1"}`}
+                />
+                <span
+                  className={`block absolute h-0.5 w-full bg-white transform transition duration-300 ease-in-out
+        ${isMobileNavOpen ? "-rotate-45 top-2.5 bg-black" : "top-4"}`}
+                />
+              </div>
             </div>
           </div>
           <nav
             className={` ${
               isMobileNavOpen ? "left-0 right-0" : "left-[-100%]"
-            } absolute  top-[80px]  h-screen flex flex-col space-y-10  bg-black text-white px-8  z-50`}
+            } absolute  top-0  h-screen flex flex-col space-y-10  bg-[#e7e5e4] text-black px-8  z-10`}
           >
+            <div className="mt-5">
+              <div className="w-[85px] h-[50px] rounded-md overflow-hidden">
+                <Link to={"/"}>
+                  <img
+                    src="/images/logo.webp"
+                    className="w-full h-full object-cover"
+                    alt="footer_icon"
+                  />
+                </Link>
+              </div>
+            </div>
             <ul className=" h-screen flex flex-col pt-20 items-center gap-4 ">
               {mobileNavLinks.map((link) => (
                 <li key={link.name} className="py-3 text-2xl font-bold">
