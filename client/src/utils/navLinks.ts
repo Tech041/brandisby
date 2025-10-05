@@ -55,7 +55,7 @@ export const fleurmobileNavLinks = [
   },
 ];
 
-export const fleurNavigation = [
+export const dynamicNavigation = [
   {
     name: "About",
     path: "/fleur/about",

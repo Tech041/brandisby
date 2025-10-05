@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 
-const FleurLayout = () => (
+const DynamicLayout = () => (
   <>
     <Outlet />
   </>
 );
 
-export default FleurLayout;
+export default DynamicLayout;
