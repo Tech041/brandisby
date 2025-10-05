@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 html {
-  font-family: "Latoc", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 @theme inline {
