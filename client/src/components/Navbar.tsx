@@ -45,7 +45,7 @@ const Navbar = () => {
             </div>
             <div className="">
               <Link
-                className="px-6 py-4 bg-yellow-400  text-sm font-semibold hover:bg-white "
+                className="px-6 py-4 bg-yellow-400  text-sm font-semibold hover:bg-yellow-400/50 "
                 to={"/register"}
               >
                 Join Now
