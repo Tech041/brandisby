@@ -1,24 +1,27 @@
+
 import Container from "./Container";
 import { Link } from "react-router-dom";
 
 const Team = () => {
+  
   return (
     <section className="w-full min-h-screen bg-amber-50">
       <Container>
         <div className="w-full h-[800px] flex flex-col lg:flex-row items-center">
+          {/* left */}
           <div className=" flex-1 w-full h-full flex items-center justify-center">
-            <div className="px-12 ">
-              <h1 className="text-3xl md:text-5xl lg:text-7xl py-4">
+            <div className="lg:px-12 ">
+              <h1 className="text-5xl lg:text-7xl py-4 pb- lg:pb-0">
                 We’re here to help you thrive
               </h1>
-              <div className="  w-full h-[300px]   lg:hidden">
+              <div className="  w-full h-[400px]   lg:hidden">
                 <img
                   src="/images/team.webp"
                   alt="image"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="py-4 mt-4 lg:mt-10">
+              <p className=" w-full py-4 mt-4 lg:mt-10 text-sm lg:text-base">
                 After years of personal and professional experience, we founded
                 Bloom Coaching to help individuals and teams make their business
                 dreams a reality. With our comprehensive guided resources,
@@ -35,11 +38,12 @@ const Team = () => {
               </div>
             </div>
           </div>
-          <div className=" flex-1 w-full h-full  hidden lg:block">
+          {/* right */}
+          <div className=" flex-1 w-full h-full  hidden lg:block  ">
             <img
               src="/images/team.webp"
               alt="image"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>

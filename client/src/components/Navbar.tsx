@@ -7,7 +7,7 @@ const Navbar = () => {
   const { toggleMobileNav, isMobileNavOpen } = useUiStore();
   return (
     <header
-      className={`w-full h-[80px] flex items-center text-white  ${
+      className={`w-full h-[80px] flex items-center text-white pt-10  ${
         isMobileNavOpen ? "fixed" : ""
       }  `}
     >
@@ -45,7 +45,7 @@ const Navbar = () => {
             </div>
             <div className="">
               <Link
-                className="px-6 py-4 bg-yellow-400  text-sm font-semibold hover:bg-yellow-400/50 "
+                className="px-6 py-4 bg-yellow-300  text-sm font-semibold hover:bg-yellow-300/50 "
                 to={"/register"}
               >
                 Join Now
@@ -87,7 +87,7 @@ const Navbar = () => {
           <nav
             className={` ${
               isMobileNavOpen ? "left-0 right-0" : "left-[-100%]"
-            } absolute  top-0  h-screen flex flex-col space-y-10  bg-[#e7e5e4] text-black px-8  z-10`}
+            } absolute  top-0  h-screen flex flex-col space-y-10  bg-[#e7e5e4] text-black px-8  z-30`}
           >
             <div className="mt-5">
               <div className="w-[85px] h-[50px] rounded-md overflow-hidden">
