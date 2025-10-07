@@ -1,10 +1,8 @@
 import Container from "./Container";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useUiStore } from "../store/UiStore";
 
 const Hero = () => {
-  const { isMobileNavOpen } = useUiStore();
   const isLoggedIn = false;
   return (
     <section className=" w-full h-screen text-white pt-20 flex items-center justify-center ">
