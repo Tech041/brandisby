@@ -4,7 +4,7 @@ import SubscriptionItem from "./SubscriptionItem";
 
 const SubscriptionCard = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center gap-5   text-black px-14 lg:px-0 pt-20">
+    <div className="flex flex-col lg:flex-row items-center gap-5   text-black  pt-20">
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}

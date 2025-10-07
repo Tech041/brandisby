@@ -1,4 +1,5 @@
 import Hero from "../../components/Hero";
+import MembershipAccess from "../../components/MembershipAccess";
 import Methodology from "../../components/Methodology";
 import Navbar from "../../components/Navbar";
 import Subscriptions from "../../components/Subscriptions";
@@ -11,7 +12,8 @@ const Home = () => {
       <Hero />
       <Team />
       <Methodology />
-      <Subscriptions/>
+      <Subscriptions />
+      <MembershipAccess />
     </main>
   );
 };
