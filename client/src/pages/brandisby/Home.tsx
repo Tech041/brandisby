@@ -1,7 +1,9 @@
+import BusinessAction from "../../components/BusinessAction";
 import Hero from "../../components/Hero";
 import MembershipAccess from "../../components/MembershipAccess";
 import Methodology from "../../components/Methodology";
 import Navbar from "../../components/Navbar";
+import Reviews from "../../components/Reviews";
 import Subscriptions from "../../components/Subscriptions";
 import Team from "../../components/Team";
 
@@ -14,6 +16,8 @@ const Home = () => {
       <Methodology />
       <Subscriptions />
       <MembershipAccess />
+      <Reviews />
+      <BusinessAction />
     </main>
   );
 };

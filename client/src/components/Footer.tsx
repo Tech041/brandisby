@@ -3,6 +3,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa6";
 import { FiTwitter } from "react-icons/fi";
 import Container from "./Container";
+import { motion } from "framer-motion";
 
 import { FaLinkedinIn } from "react-icons/fa";
 import { desktopNavLinks } from "../utils/navLinks";
@@ -11,24 +12,32 @@ import Socials from "./Socials";
 
 const Footer = () => {
   return (
-    <footer className="w-full h-full bg-black border-t border-t-gray-700 pt-5">
+    <footer className="w-full h-full bg-amber-50 pt-5">
       <Container>
-        <div className="w-full h-full">
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: false }}
+          className="w-full h-full"
+        >
           {/* upper */}
           <div className="flex flex-col md:flex-row justify-center">
-            <div className="flex-1">
+            {/* left */}
+            <div className="flex-1 flex flex-col justify-between">
               <div className=" w-[85px] h-[50px] md:w-[100px] md:h-[50px] rounded-md overflow-hidden">
                 <img
                   src="/images/logo.webp"
                   className="w-full h-full object-cover"
                 />
               </div>
+              <div className="">
+                <p className="">Personalized business coaching</p>
+              </div>
             </div>
+            {/* middle */}
             <div className="flex-1 pb-2">
-              <h2 className="text-white font-semibold text-lg md:text-xl md:text-center pt-4 pb-2">
-                Quick Links
-              </h2>
-              <ul className="text-gray-300 flex flex-col md:items-center gap-2">
+              <ul className="text-black flex flex-col md:items-center gap-2">
                 {desktopNavLinks.map((link) => (
                   <li key={link.name} className="">
                     <Link className=" text-sm md:text-base" to={link.name}>
@@ -38,32 +47,33 @@ const Footer = () => {
                 ))}
               </ul>{" "}
             </div>
+            {/* right */}
             <div className="flex-1 flex  md:justify-end gap-4 pb-4 pt-5 ">
               <Socials path="">
-                <FaInstagram size={30} color="white" />
+                <FaInstagram size={30} color="black" />
               </Socials>
               <Socials path="">
-                <FaTiktok size={25} color="white" />
+                <FaTiktok size={25} color="black" />
               </Socials>
               <Socials path="">
-                <FaEnvelope size={30} color="white" />
+                <FaEnvelope size={30} color="black" />
               </Socials>
               <Socials path="">
-                <FaLinkedinIn size={30} color="white" />
+                <FaLinkedinIn size={30} color="black" />
               </Socials>
               <Socials path="">
-                <FiTwitter size={30} color="white" />
+                <FiTwitter size={30} color="black" />
               </Socials>
             </div>
           </div>
           {/* lower */}
           <div className="">
-            <p className="text-sm md:text-lg text-gray-500 text-center">
+            <p className="text-sm md:text-lg text-gray-800 text-center">
               &copy; [{new Date().getFullYear()}] Brandisby. All Rights
               Reserved.{" "}
             </p>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </footer>
   );
