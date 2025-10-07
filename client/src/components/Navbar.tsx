@@ -37,7 +37,7 @@ const Navbar = () => {
           <div className="flex items-center gap-5">
             <div className="">
               <Link
-                className="hover:text-black text-sm font-semibold"
+                className="text-white text-sm font-semibold"
                 to={"/login"}
               >
                 Login
@@ -45,7 +45,7 @@ const Navbar = () => {
             </div>
             <div className="">
               <Link
-                className="px-6 py-4 bg-yellow-300  text-sm font-semibold hover:bg-yellow-300/50 "
+                className="px-6 py-4 bg-yellow-300 text-black  text-sm font-semibold hover:bg-yellow-300/50 "
                 to={"/register"}
               >
                 Join Now

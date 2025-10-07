@@ -1,5 +1,7 @@
 import Hero from "../../components/Hero";
+import Methodology from "../../components/Methodology";
 import Navbar from "../../components/Navbar";
+import Subscriptions from "../../components/Subscriptions";
 import Team from "../../components/Team";
 
 const Home = () => {
@@ -8,6 +10,8 @@ const Home = () => {
       <Navbar />
       <Hero />
       <Team />
+      <Methodology />
+      <Subscriptions/>
     </main>
   );
 };
