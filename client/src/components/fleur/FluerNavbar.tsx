@@ -55,7 +55,6 @@ const FluerNavbar = () => {
                 </Socials>
               </li>
             </ul>
-            
           </div>
         </div>
         {/* mobile navbar */}
@@ -72,7 +71,7 @@ const FluerNavbar = () => {
                     className="w-full h-[30px] object-cover"
                     alt="logo"
                   />
-                  <span className="text-sm text-center text-yellow-900">
+                  <span className="text-sm text-center text-white">
                     Fleurdevie
                   </span>
                 </Link>

@@ -82,15 +82,15 @@ export const seracmobileNavLinks = [
 
 export const dynamicNavigation = [
   {
-    name: "About",
-    path: "/fleur/about",
+    name: "Gallery",
+    path: "gallery",
   },
   {
-    name: "Shop",
-    path: "/fleur/shop",
+    name: "Sign Up",
+    path: "sign-up",
   },
   {
     name: "Contact ",
-    path: "fleur/contact",
+    path: "contact",
   },
 ];

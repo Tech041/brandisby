@@ -44,7 +44,7 @@ const SeracFooter = () => {
             {/* middle */}
             <div className="flex-1 pb-2 hidden lg:block">
               <h2 className="text-black text-lg md:text-3xl md:text-center pt-4 pb-2 uppercase ">
-                Fleurdevie
+                Serac
               </h2>
               <div className="flex-1 flex  md:justify-center gap-4 pb-4 pt-5 ">
                 <Socials path="">
@@ -67,7 +67,7 @@ const SeracFooter = () => {
 
             <div className="flex-1 pb-2 lg:hidden">
               <h2 className="text-black text-lg text-center pt-4 pb-2 uppercase ">
-                Fleurdevie
+                Serac
               </h2>
               <div className=" flex justify-center gap-4 pb-4 pt-5 ">
                 <Socials path="">
