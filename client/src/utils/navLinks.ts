@@ -50,16 +50,17 @@ export const fleurmobileNavLinks = [
     path: "/fleurdevie/home",
   },
   {
-    name: "About",
-    path: "/fleurdevie/about",
+    name: "gallery",
+    path: "/fleurdevie/gallery",
+  },
+
+  {
+    name: "story",
+    path: "/fleurdevie/story",
   },
   {
-    name: "Shop",
-    path: "/fleurdevie/shop",
-  },
-  {
-    name: "Contact",
-    path: "/fleurdevie/contact",
+    name: "visit",
+    path: "/fleurdevie/visit",
   },
 ];
 
@@ -72,10 +73,7 @@ export const seracmobileNavLinks = [
     name: "About",
     path: "/serac/about",
   },
-  {
-    name: "Shop",
-    path: "serac//shop",
-  },
+
   {
     name: "Contact",
     path: "/serac/contact",
@@ -92,7 +90,7 @@ export const dynamicNavigation = [
     path: "/fleur/shop",
   },
   {
-    name: "Contact Us",
+    name: "Contact ",
     path: "fleur/contact",
   },
 ];

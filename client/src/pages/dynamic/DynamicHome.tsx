@@ -10,41 +10,30 @@ const DynamicHome = () => {
   const { tenant } = useParams();
 
   return (
-    <main className="relative  overflow-hidden">
-      {/* Background Video */}
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        src="https://evelynbankz.github.io/brandisby./FleurDeVie/yourvideo.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
-
-      {/* Overlay Content */}
-      <div className="w-full min-h-screen flex flex-col relative z-10 ">
+    <main className="w-full min-h-screen  ">
+      <div className="w-full h-full bg-[url('/images/home.webp')] bg-cover bg-center bg-no-repeat flex flex-col relative  ">
         <div className="w-full ">
           {tenant === "fleurdevie" ? <FluerNavbar /> : <SeracNavbar />}
         </div>{" "}
-        <section className="w-full flex-grow flex items-center justify-center relative ">
+        <section className="w-full h-screen flex-grow flex items-center justify-center relative ">
           <Container>
             <div className="w-full   flex items-center justify-center">
-              <ul className="w-full flex flex-col md:flex-row items-center justify-center gap-8 absolute bottom-0 md:bottom-10">
+              <ul className="w-full flex flex-col md:flex-row items-center justify-center gap-8 absolute top-1/2">
                 {dynamicNavigation.map((link) => (
                   <li
                     key={link.name}
-                    className="text-3xl md:text-5xl font-semibold md:font-bold text-white"
+                    className=" text-6xl lg:text-[100px]  text-white"
                   >
-                    <Link to={link.path}>{link.name}</Link>
+                    <Link className="border-b-2 border-b-gray-50 " to={link.path}>{link.name}</Link>
                   </li>
                 ))}
               </ul>
             </div>
           </Container>
         </section>
-        <div className="w-full ">
-          {tenant === "fleurdevie" ? <FluerFooter /> : <SeracFooter />}
-        </div>{" "}
+      </div>{" "}
+      <div className="w-full ">
+        {tenant === "fleurdevie" ? <FluerFooter /> : <SeracFooter />}
       </div>
     </main>
   );

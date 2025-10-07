@@ -4,66 +4,105 @@ import { FaEnvelope } from "react-icons/fa6";
 import { FiTwitter } from "react-icons/fi";
 
 import { FaLinkedinIn } from "react-icons/fa";
-import { Link } from "react-router-dom";
-
-import { fleurmobileNavLinks } from "../../utils/navLinks";
 import Container from "../Container";
 import Socials from "../Socials";
 
 const SeracFooter = () => {
   return (
-    <footer className="w-full h-full text-white pt-5">
+    <footer className="w-full h-full bg-amber-50 text-black pt-5">
       <Container>
         <div className="w-full h-full">
           {/* upper */}
           <div className="flex flex-col md:flex-row justify-center">
-            <div className="flex-1">
-              <div className=" md:w-[200px] md:h-[120px] w-[100px] h-[50px] rounded-md overflow-hidden">
-                <Link className="w-full h-full" to={"/serac/home"}>
-                  <img
-                    src="/images/serac_logo.webp"
-                    className="w-full h-full object-cover"
-                    alt="logo"
-                  />
-                </Link>
+            {/* left */}
+            <div className="flex-1 flex justify-between">
+              <div className="flex-1">
+                <div className="font-light">
+                  <h2 className="text-2xl py-3 text-center uppercase font-medium">
+                    Contact
+                  </h2>
+                  <p className="lg:py-2 text-lg text-center">123 Demo Street</p>
+                  <p className="text-lg text-center">New York, NY 12345</p>
+                </div>
+                <div className="pt-3 text-lg font-light">
+                  <p className="text-center">email@example.com</p>
+                  <p className=" text-center">(555) 555-5555</p>
+                </div>
+              </div>
+              <div className=" flex-1 lg:hidden">
+                <div className="text-lg font-light text-center">
+                  <h1 className="text-2xl py-3 text-center uppercase font-medium">
+                    Hours
+                  </h1>
+                  <p className="">Mon–Wed 6–11</p>
+                  <p className="">Thu–Sat 4–12</p>
+                  <p className="">Sun 3–10</p>
+                </div>
               </div>
             </div>
-            <div className="flex-1 pb-2">
-              <h2 className="text-white font-semibold text-lg md:text-xl md:text-center pt-4 pb-2">
-                Quick Links
+
+            {/* middle */}
+            <div className="flex-1 pb-2 hidden lg:block">
+              <h2 className="text-black text-lg md:text-3xl md:text-center pt-4 pb-2 uppercase ">
+                Fleurdevie
               </h2>
-              <ul className=" flex flex-col md:items-center gap-2">
-                {fleurmobileNavLinks.map((link) => (
-                  <li key={link.name} className="">
-                    <Link className=" text-sm md:text-base" to={link.name}>
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>{" "}
+              <div className="flex-1 flex  md:justify-center gap-4 pb-4 pt-5 ">
+                <Socials path="">
+                  <FaInstagram size={30} color="black" />
+                </Socials>
+                <Socials path="">
+                  <FaTiktok size={25} color="black" />
+                </Socials>
+                <Socials path="">
+                  <FaEnvelope size={30} color="black" />
+                </Socials>
+                <Socials path="">
+                  <FaLinkedinIn size={30} color="black" />
+                </Socials>
+                <Socials path="">
+                  <FiTwitter size={30} color="black" />
+                </Socials>
+              </div>
             </div>
-            <div className="flex-1 flex  md:justify-end gap-4 pb-4 pt-5 ">
-              <Socials path="">
-                <FaInstagram size={30} color="white" />
-              </Socials>
-              <Socials path="">
-                <FaTiktok size={25} color="white" />
-              </Socials>
-              <Socials path="">
-                <FaEnvelope size={30} color="white" />
-              </Socials>
-              <Socials path="">
-                <FaLinkedinIn size={30} color="white" />
-              </Socials>
-              <Socials path="">
-                <FiTwitter size={30} color="white" />
-              </Socials>
+
+            <div className="flex-1 pb-2 lg:hidden">
+              <h2 className="text-black text-lg text-center pt-4 pb-2 uppercase ">
+                Fleurdevie
+              </h2>
+              <div className=" flex justify-center gap-4 pb-4 pt-5 ">
+                <Socials path="">
+                  <FaInstagram size={30} color="black" />
+                </Socials>
+                <Socials path="">
+                  <FaTiktok size={25} color="black" />
+                </Socials>
+                <Socials path="">
+                  <FaEnvelope size={30} color="black" />
+                </Socials>
+                <Socials path="">
+                  <FaLinkedinIn size={30} color="black" />
+                </Socials>
+                <Socials path="">
+                  <FiTwitter size={30} color="black" />
+                </Socials>
+              </div>
+            </div>
+            {/* right */}
+            <div className=" flex-1 hidden lg:block">
+              <div className="text-lg font-light text-center">
+                <h1 className="text-2xl py-3 text-center uppercase font-medium">
+                  Hours
+                </h1>
+                <p className="">Mon–Wed 6–11</p>
+                <p className="">Thu–Sat 4–12</p>
+                <p className="">Sun 3–10</p>
+              </div>
             </div>
           </div>
           {/* lower */}
           <div className="">
-            <p className="text-sm md:text-lg  text-center">
-              &copy; [{new Date().getFullYear()}] Sérac . All Rights Reserved.{" "}
+            <p className="text-sm md:text-lg  text-center font-light">
+              &copy; [{new Date().getFullYear()}] Serac. All Rights Reserved.{" "}
             </p>
           </div>
         </div>
