@@ -17,11 +17,7 @@ const Hero = () => {
             viewport={{ once: false }}
             className="w-full h-full"
           >
-            <h1
-              className={`${
-                isMobileNavOpen ? "hidden" : "block"
-              } text-6xl lg:text-[120px] text-center text-white  py-3`}
-            >
+            <h1 className=" text-6xl lg:text-[120px] text-center text-white  py-3">
               Take control of your business
             </h1>
           </motion.div>

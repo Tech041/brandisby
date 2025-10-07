@@ -7,8 +7,8 @@ const Navbar = () => {
   const { toggleMobileNav, isMobileNavOpen } = useUiStore();
   return (
     <header
-      className={`w-full h-[80px] flex items-center text-white pt-10  ${
-        isMobileNavOpen ? "fixed" : ""
+      className={`w-full h-[80px] flex items-center text-white pt-10  z-50 ${
+        isMobileNavOpen ? "fixed" : "relative"
       }  `}
     >
       <Container>
@@ -23,7 +23,7 @@ const Navbar = () => {
           </div>
           {/* NavLinks */}
           <div className="flex items-center justify-center">
-            <ul className="flex items-center gap-6 text-black ">
+            <ul className="flex items-center gap-6 text-white ">
               {desktopNavLinks.map((link) => (
                 <li key={link.name} className="">
                   <Link className="text-sm font-semibold" to={link.path}>
@@ -74,12 +74,12 @@ const Navbar = () => {
             >
               <div className="relative w-10 h-6">
                 <span
-                  className={`block absolute h-0.5 w-full bg-white transform transition duration-300 ease-in-out
-        ${isMobileNavOpen ? "rotate-45 top-2.5 bg-black" : "top-1"}`}
+                  className={`block absolute h-0.5 w-full  transform transition duration-300 ease-in-out
+        ${isMobileNavOpen ? "rotate-45 top-2.5 bg-black" : "top-1 bg-white"}`}
                 />
                 <span
-                  className={`block absolute h-0.5 w-full bg-white transform transition duration-300 ease-in-out
-        ${isMobileNavOpen ? "-rotate-45 top-2.5 bg-black" : "top-4"}`}
+                  className={`block absolute h-0.5 w-full  transform transition duration-300 ease-in-out
+        ${isMobileNavOpen ? "-rotate-45 top-2.5 bg-black" : "top-4 bg-white"}`}
                 />
               </div>
             </div>
@@ -87,9 +87,9 @@ const Navbar = () => {
           <nav
             className={` ${
               isMobileNavOpen ? "left-0 right-0" : "left-[-100%]"
-            } absolute  top-0  h-screen flex flex-col space-y-10  bg-[#e7e5e4] text-black px-8  z-30`}
+            } absolute  top-0  min-h-screen flex flex-col space-y-10  bg-[#e3e5d6] text-black px-8 `}
           >
-            <div className="mt-5">
+            <div className="mt-10">
               <div className="w-[85px] h-[50px] rounded-md overflow-hidden">
                 <Link to={"/"}>
                   <img
@@ -100,9 +100,9 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
-            <ul className=" h-screen flex flex-col pt-20 items-center gap-4 ">
+            <ul className=" flex flex-col pt-5 items-center gap-4 ">
               {mobileNavLinks.map((link) => (
-                <li key={link.name} className="py-3 text-2xl font-bold">
+                <li key={link.name} className="py-3 text-3xl font-semibold">
                   <Link to={link.path}>{link.name}</Link>
                 </li>
               ))}
