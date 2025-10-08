@@ -73,7 +73,7 @@ const DynamicNavbar = () => {
                     alt="logo"
                   />
                   <span className="text-sm text-center text-white">
-                    {`${tenant === "fleurdevie" ? "Fleurdevie" : "/Serac"}`}
+                    {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
                   </span>
                 </Link>
               </div>

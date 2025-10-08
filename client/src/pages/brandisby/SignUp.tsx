@@ -31,9 +31,9 @@ const SignUp = () => {
               className="w-full max-w-md space-y-6"
             >
               <h1 className="text-3xl lg:text-5xl font-bold text-black text-center">
-                Brandisby
+                Welcome To Brandisby
               </h1>
-              <p className="text-black text-3xl lg:text-4xl text-center">
+              <p className="text-black text-2xl lg:text-4xl text-center">
                 Create your account
               </p>
 
