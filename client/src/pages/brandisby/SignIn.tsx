@@ -2,14 +2,12 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Container from "../../components/Container";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { loginSchema } from "../../schema/DynamicAuth";
 
 type FormData = z.infer<typeof loginSchema>;
 
-const Login = () => {
-  const { tenant } = useParams();
-
+const SignIn = () => {
   const {
     register,
     handleSubmit,
@@ -33,7 +31,7 @@ const Login = () => {
               className="w-full max-w-md space-y-6"
             >
               <h1 className="text-3xl lg:text-5xl font-bold text-black text-center">
-                {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
+                Brandisby
               </h1>
               <p className="text-black text-3xl lg:text-4xl text-center">
                 Login to your account
@@ -85,16 +83,13 @@ const Login = () => {
             <div className="pt-3 text-sm">
               <p className="text-center text-gray-500">
                 Do not have an account?
-                <Link to={`/${tenant}/sign-up`} className="text-blue-500 pl-1">
+                <Link to={`/register`} className="text-blue-500 pl-1">
                   Register
                 </Link>
               </p>
               <p className="pt-2 text-center">
-                By proceeding, you agree to{" "}
-                <span className="">
-                  {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
-                </span>{" "}
-                Terms of Service and Privacy Policy
+                By proceeding, you agree to Brandisby Terms of Service and Privacy
+                Policy
               </p>
             </div>
           </div>
@@ -102,12 +97,8 @@ const Login = () => {
           {/* Banner Section */}
           <div className="hidden  lg:w-1/2  bg-[#BBCBFC] lg:flex items-center justify-center px-10 rounded-4xl">
             <p className="text-6xl font-extrabold">
-              “
-              <span className="">
-                {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
-              </span>{" "}
-              makes it incredibly simple. Once your product is live, everything
-              runs on autopilot.”
+              “Brandisby makes it incredibly simple. Once your product is live,
+              everything runs on autopilot.”
             </p>
           </div>
         </div>
@@ -115,4 +106,4 @@ const Login = () => {
     </main>
   );
 };
-export default Login;
+export default SignIn;

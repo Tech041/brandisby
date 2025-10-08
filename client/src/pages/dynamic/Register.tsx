@@ -1,12 +1,9 @@
-
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Container from "../../components/Container";
 import { Link, useParams } from "react-router-dom";
 import { registerSchema } from "../../schema/DynamicAuth";
-
-
 
 type FormData = z.infer<typeof registerSchema>;
 
@@ -109,8 +106,11 @@ const Register = () => {
                 </Link>
               </p>
               <p className="pt-2 text-center">
-                By proceeding, you agree to Sellfy Terms of Service and Privacy
-                Policy
+                By proceeding, you agree to{" "}
+                <span className="">
+                  {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
+                </span>{" "}
+                Terms of Service and Privacy Policy
               </p>
             </div>
           </div>
