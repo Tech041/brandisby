@@ -4,7 +4,7 @@ import { useUiStore } from "../../store/UiStore";
 import Socials from "../Socials";
 import { FaInstagram } from "react-icons/fa6";
 import { FiTwitter } from "react-icons/fi";
-import {  tenantNavLinks } from "../../utils/navLinks";
+import { tenantNavLinks } from "../../utils/navLinks";
 
 const DynamicNavbar = () => {
   const { tenant } = useParams();
@@ -68,7 +68,11 @@ const DynamicNavbar = () => {
                   to={`${tenant === "fleurdevie" ? "/fleurdevie" : "/serac"}`}
                 >
                   <img
-                    src="/images/fleur_logo.webp"
+                    src={`${
+                      tenant === "fleurdevie"
+                        ? "/images/fleur_logo.webp"
+                        : "/images/serac_logo.webp"
+                    }`}
                     className="w-full h-[30px] object-cover"
                     alt="logo"
                   />
