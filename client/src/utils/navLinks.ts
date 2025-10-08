@@ -44,46 +44,30 @@ export const mobileNavLinks = [
   },
 ];
 
-export const fleurmobileNavLinks = [
+export const tenantNavLinks = [
   {
     name: "Home",
-    path: "/fleurdevie/home",
+    path: "/",
   },
   {
     name: "gallery",
-    path: "/fleurdevie/gallery",
+    path: "gallery",
   },
 
   {
     name: "story",
-    path: "/fleurdevie/story",
+    path: "story",
   },
   {
     name: "visit",
-    path: "/fleurdevie/visit",
-  },
-];
-
-export const seracmobileNavLinks = [
-  {
-    name: "Home",
-    path: "/serac/home",
-  },
-  {
-    name: "About",
-    path: "/serac/about",
-  },
-
-  {
-    name: "Contact",
-    path: "/serac/contact",
+    path: "visit",
   },
 ];
 
 export const dynamicNavigation = [
   {
-    name: "Gallery",
-    path: "gallery",
+    name: "About",
+    path: "about",
   },
   {
     name: "Sign Up",

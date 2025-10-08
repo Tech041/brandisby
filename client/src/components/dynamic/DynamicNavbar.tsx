@@ -1,13 +1,14 @@
 import Container from "../Container";
-import { Link } from "react-router-dom";
-
+import { Link, useParams } from "react-router-dom";
 import { useUiStore } from "../../store/UiStore";
-import { fleurmobileNavLinks } from "../../utils/navLinks";
 import Socials from "../Socials";
 import { FaInstagram } from "react-icons/fa6";
 import { FiTwitter } from "react-icons/fi";
+import {  tenantNavLinks } from "../../utils/navLinks";
 
-const FluerNavbar = () => {
+const DynamicNavbar = () => {
+  const { tenant } = useParams();
+
   const { isMobileNavOpen, toggleMobileNav } = useUiStore();
   return (
     <header
@@ -23,7 +24,7 @@ const FluerNavbar = () => {
             <div className="w-[200px] h-[120px] rounded-md overflow-hidden">
               <Link
                 className="w-full h-full flex items-center"
-                to={"/fleurdevie/home"}
+                to={`${tenant === "fleurdevie" ? "/fleurdevie" : "/serac"}`}
               >
                 {/* <img
                   src="/images/fleur_logo.webp"
@@ -31,7 +32,7 @@ const FluerNavbar = () => {
                   alt="logo"
                 /> */}
                 <span className="text-4xl font-semibold text-white">
-                  Fleurdevie
+                  {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
                 </span>
               </Link>
             </div>
@@ -39,7 +40,7 @@ const FluerNavbar = () => {
 
           <div className="flex-1">
             <ul className="flex items- justify-end gap-5">
-              {fleurmobileNavLinks.map((link) => (
+              {tenantNavLinks.map((link) => (
                 <li key={link.name} className="text-lg md:text-xl  capitalize ">
                   <Link to={link.path}>{link.name}</Link>
                 </li>
@@ -64,7 +65,7 @@ const FluerNavbar = () => {
               <div className="w-[100px] h-[100px] rounded-md overflow-hidden">
                 <Link
                   className="w-full h-full flex flex-col justify-center"
-                  to={"/fleurdevie/home"}
+                  to={`${tenant === "fleurdevie" ? "/fleurdevie" : "/serac"}`}
                 >
                   <img
                     src="/images/fleur_logo.webp"
@@ -72,7 +73,7 @@ const FluerNavbar = () => {
                     alt="logo"
                   />
                   <span className="text-sm text-center text-white">
-                    Fleurdevie
+                    {`${tenant === "fleurdevie" ? "Fleurdevie" : "/Serac"}`}
                   </span>
                 </Link>
               </div>
@@ -102,14 +103,18 @@ const FluerNavbar = () => {
             <div className="w-[100px] h-[50px] rounded-md overflow-hidden mt-10">
               <Link to={"/"}>
                 <img
-                  src="/images/fleur_logo.webp"
+                  src={`${
+                    tenant === "fleurdevie"
+                      ? "/images/fleur_logo.webp"
+                      : "/images/serac_logo.webp"
+                  }`}
                   className="w-full h-full object-cover"
                   alt="logo"
                 />
               </Link>
             </div>
             <ul className=" h-screen flex flex-col  items-center justify-center gap-4 ">
-              {fleurmobileNavLinks.map((link) => (
+              {tenantNavLinks.map((link) => (
                 <li
                   key={link.name}
                   className="py-3 text-2xl font-bold capitalize"
@@ -152,4 +157,4 @@ const FluerNavbar = () => {
   );
 };
 
-export default FluerNavbar;
+export default DynamicNavbar;

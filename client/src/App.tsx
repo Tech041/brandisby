@@ -7,6 +7,8 @@ const BrandisbyLayout = React.lazy(() => import("./layouts/BrandisbyLayout"));
 const DynamicLayout = React.lazy(() => import("./layouts/DynamicLayout"));
 const DynamicHome = React.lazy(() => import("./pages/dynamic/DynamicHome"));
 const Register = React.lazy(() => import("./pages/dynamic/Register"));
+const Login = React.lazy(() => import("./pages/dynamic/Login"));
+
 const DynamicNotFound = React.lazy(
   () => import("./pages/dynamic/DynamicNotFound")
 );
@@ -26,9 +28,10 @@ const App = () => {
       <Route path="/:tenant/*" element={<DynamicLayout />}>
         <Route path="" element={<DynamicHome />} />
         <Route path="sign-up" element={<Register />} />
+        <Route path="sign-in" element={<Login />} />
+
         <Route path="*" element={<DynamicNotFound />} />
       </Route>
-      
     </Routes>
   );
 };

@@ -1,10 +1,8 @@
-import FluerNavbar from "../../components/fleur/FluerNavbar";
-import FluerFooter from "../../components/fleur/FleurFooter";
 import Container from "../../components/Container";
 import { Link, useParams } from "react-router-dom";
 import { dynamicNavigation } from "../../utils/navLinks";
-import SeracNavbar from "../../components/serac/SeracNavbar";
-import SeracFooter from "../../components/serac/SeracFooter";
+import DynamicNavbar from "../../components/dynamic/DynamicNavbar";
+import DynamicFooter from "../../components/dynamic/DynamicFooter";
 
 const DynamicHome = () => {
   const { tenant } = useParams();
@@ -19,7 +17,7 @@ const DynamicHome = () => {
         } bg-cover bg-center bg-no-repeat flex flex-col relative`}
       >
         <div className="w-full ">
-          {tenant === "fleurdevie" ? <FluerNavbar /> : <SeracNavbar />}
+          <DynamicNavbar />
         </div>{" "}
         <section className="w-full h-screen flex-grow flex items-center justify-center  ">
           <Container>
@@ -49,7 +47,7 @@ const DynamicHome = () => {
         </section>
       </div>{" "}
       <div className="w-full ">
-        {tenant === "fleurdevie" ? <FluerFooter /> : <SeracFooter />}
+        <DynamicFooter />
       </div>
     </main>
   );

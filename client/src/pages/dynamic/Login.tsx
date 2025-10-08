@@ -1,16 +1,13 @@
-
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Container from "../../components/Container";
 import { Link, useParams } from "react-router-dom";
-import { registerSchema } from "../../schema/DynamicAuth";
+import { loginSchema } from "../../schema/DynamicAuth";
 
+type FormData = z.infer<typeof loginSchema>;
 
-
-type FormData = z.infer<typeof registerSchema>;
-
-const Register = () => {
+const Login = () => {
   const { tenant } = useParams();
 
   const {
@@ -18,7 +15,7 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(registerSchema),
+    resolver: zodResolver(loginSchema),
   });
 
   const onSubmit = (data: FormData) => {
@@ -28,7 +25,7 @@ const Register = () => {
   return (
     <main className="w-full h-screen flex items-center justify-center ">
       <Container>
-        <div className="w-full h-[600px] flex flex-col lg:flex-row ">
+        <div className="w-full h-[500px] flex flex-col lg:flex-row ">
           {/* Form Section */}
           <div className="flex-1 flex flex-col items-center justify-center lg:p-6">
             <form
@@ -39,24 +36,8 @@ const Register = () => {
                 {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
               </h1>
               <p className="text-black text-3xl lg:text-4xl text-center">
-                Create your account
+                Login to your account
               </p>
-
-              <div>
-                <label htmlFor="" className="">
-                  First Name
-                </label>
-                <input
-                  {...register("firstname")}
-                  placeholder="First Name"
-                  className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
-                />
-                {errors.firstname && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.firstname.message}
-                  </p>
-                )}
-              </div>
 
               <div className="">
                 <label htmlFor="" className="">
@@ -98,14 +79,14 @@ const Register = () => {
                 type="submit"
                 className="w-full bg-black text-white py-3 rounded-full hover:bg-black/50"
               >
-                Sign Up
+                Sign In
               </button>
             </form>
             <div className="pt-3 text-sm">
               <p className="text-center text-gray-500">
-                Have an account?
-                <Link to={`/${tenant}/sign-in`} className="text-blue-500 pl-1">
-                  Log in
+                Do not have an account?
+                <Link to={`/${tenant}/sign-up`} className="text-blue-500 pl-1">
+                  Register
                 </Link>
               </p>
               <p className="pt-2 text-center">
@@ -131,4 +112,4 @@ const Register = () => {
     </main>
   );
 };
-export default Register;
+export default Login;

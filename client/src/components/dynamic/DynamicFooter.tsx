@@ -6,8 +6,11 @@ import { FiTwitter } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import Container from "../Container";
 import Socials from "../Socials";
+import { useParams } from "react-router-dom";
 
-const FleurFooter = () => {
+const DynamicFooter = () => {
+  const { tenant } = useParams();
+
   return (
     <footer className="w-full h-full bg-amber-50 text-black pt-5">
       <Container>
@@ -44,7 +47,7 @@ const FleurFooter = () => {
             {/* middle */}
             <div className="flex-1 pb-2 hidden lg:block">
               <h2 className="text-black text-lg md:text-3xl md:text-center pt-4 pb-2 uppercase ">
-                Fleurdevie
+                {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
               </h2>
               <div className="flex-1 flex  md:justify-center gap-4 pb-4 pt-5 ">
                 <Socials path="">
@@ -66,8 +69,8 @@ const FleurFooter = () => {
             </div>
 
             <div className="flex-1 pb-2 lg:hidden">
-              <h2 className="text-black text-lg text-center pt-4 pb-2 uppercase ">
-                Fleurdevie
+              <h2 className="text-black   text-3xl text-center pt-4 pb-2 uppercase ">
+                {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
               </h2>
               <div className=" flex justify-center gap-4 pb-4 pt-5 ">
                 <Socials path="">
@@ -102,8 +105,8 @@ const FleurFooter = () => {
           {/* lower */}
           <div className="">
             <p className="text-sm md:text-lg  text-center font-light">
-              &copy; [{new Date().getFullYear()}] Fleurdevie. All Rights
-              Reserved.{" "}
+              {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
+              &copy; [{new Date().getFullYear()}] . All Rights Reserved.{" "}
             </p>
           </div>
         </div>
@@ -112,4 +115,4 @@ const FleurFooter = () => {
   );
 };
 
-export default FleurFooter;
+export default DynamicFooter;
