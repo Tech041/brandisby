@@ -3,7 +3,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Container from "../../components/Container";
 import { Link } from "react-router-dom";
-import { loginSchema } from "../../schema/DynamicAuth";
+import { loginSchema } from "../../schema/BrandisbyAuth";
+
 
 type FormData = z.infer<typeof loginSchema>;
 
@@ -31,7 +32,7 @@ const SignIn = () => {
               className="w-full max-w-md space-y-6"
             >
               <h1 className="text-3xl lg:text-5xl font-bold text-black text-center">
-                Welcome To Brandisby
+                Welcome Back
               </h1>
               <p className="text-black text-2xl lg:text-4xl text-center">
                 Login to your account
@@ -88,8 +89,8 @@ const SignIn = () => {
                 </Link>
               </p>
               <p className="pt-2 text-center">
-                By proceeding, you agree to Brandisby Terms of Service and Privacy
-                Policy
+                By proceeding, you agree to Brandisby Terms of Service and
+                Privacy Policy
               </p>
             </div>
           </div>
@@ -97,8 +98,8 @@ const SignIn = () => {
           {/* Banner Section */}
           <div className="hidden  lg:w-1/2  bg-[#BBCBFC] lg:flex items-center justify-center px-10 rounded-4xl">
             <p className="text-6xl font-extrabold">
-              “Brandisby makes it incredibly simple. Once your product is live,
-              everything runs on autopilot.”
+              “Brandisby is your number 1 market place. We bring you closer to
+              your intended customers ”
             </p>
           </div>
         </div>

@@ -3,12 +3,23 @@
   "version": "1.0.0",
   "description": "brandisby express server",
   "main": "app.js",
-  
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"node server.js",
+    "server": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "cloudinary": "^2.7.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.19.1",
+    "zod": "^4.1.12"
+  }
 }

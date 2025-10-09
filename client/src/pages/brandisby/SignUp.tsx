@@ -3,7 +3,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Container from "../../components/Container";
 import { Link } from "react-router-dom";
-import { registerSchema } from "../../schema/DynamicAuth";
+import { registerSchema } from "../../schema/BrandisbyAuth";
 
 type FormData = z.infer<typeof registerSchema>;
 
@@ -21,9 +21,9 @@ const SignUp = () => {
   };
 
   return (
-    <main className="w-full h-screen flex items-center justify-center ">
+    <main className="w-full min-h-screen flex items-center justify-center ">
       <Container>
-        <div className="w-full h-[600px] flex flex-col lg:flex-row ">
+        <div className="w-full h-full flex flex-col lg:flex-row ">
           {/* Form Section */}
           <div className="flex-1 flex flex-col items-center justify-center lg:p-6">
             <form
@@ -31,7 +31,7 @@ const SignUp = () => {
               className="w-full max-w-md space-y-6"
             >
               <h1 className="text-3xl lg:text-5xl font-bold text-black text-center">
-                Welcome To Brandisby
+                Join as Creator
               </h1>
               <p className="text-black text-2xl lg:text-4xl text-center">
                 Create your account
@@ -39,16 +39,16 @@ const SignUp = () => {
 
               <div>
                 <label htmlFor="" className="">
-                  First Name
+                  Brand Name
                 </label>
                 <input
-                  {...register("firstname")}
-                  placeholder="First Name"
+                  {...register("brandname")}
+                  placeholder="Brand Name"
                   className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
                 />
-                {errors.firstname && (
+                {errors.brandname && (
                   <p className="text-red-500 text-sm mt-1">
-                    {errors.firstname.message}
+                    {errors.brandname.message}
                   </p>
                 )}
               </div>
@@ -88,6 +88,61 @@ const SignUp = () => {
                   </p>
                 )}
               </div>
+              {/* logo */}
+              <div>
+                <label htmlFor="" className="">
+                  Logo
+                </label>
+
+                <input
+                  {...register("logo")}
+                  placeholder="Logo"
+                  type="text"
+                  className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
+                />
+                {errors.logo && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.logo.message}
+                  </p>
+                )}
+              </div>
+              {/* country */}
+              <div>
+                <label htmlFor="" className="">
+                  Country
+                </label>
+
+                <input
+                  {...register("country")}
+                  placeholder="Country"
+                  type="text"
+                  className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
+                />
+                {errors.country && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.country.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Business type */}
+              <div>
+                <label htmlFor="" className="">
+                  Business Type
+                </label>
+
+                <input
+                  {...register("businessType")}
+                  placeholder="Business Type"
+                  type="text"
+                  className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
+                />
+                {errors.businessType && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.businessType.message}
+                  </p>
+                )}
+              </div>
 
               <button
                 type="submit"
@@ -113,8 +168,8 @@ const SignUp = () => {
           {/* Banner Section */}
           <div className="hidden  lg:w-1/2  bg-[#BBCBFC] lg:flex items-center justify-center px-10 rounded-4xl">
             <p className="text-6xl font-extrabold">
-              “Brandisby makes it incredibly simple. Once your product is live,
-              everything runs on autopilot.”
+              “Brandisby is your number 1 market place. We bring you closer to
+              your intended customers ”
             </p>
           </div>
         </div>

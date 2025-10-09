@@ -5,6 +5,7 @@ import Container from "../../components/Container";
 import { Link, useParams } from "react-router-dom";
 import { loginSchema } from "../../schema/DynamicAuth";
 
+
 type FormData = z.infer<typeof loginSchema>;
 
 const Login = () => {
