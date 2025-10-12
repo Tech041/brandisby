@@ -88,41 +88,43 @@ const SignUp = () => {
                   </p>
                 )}
               </div>
-              {/* logo */}
-              <div>
-                <label htmlFor="" className="">
-                  Logo
-                </label>
+              <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-3">
+                {/* logo */}
+                <div className=" w-full">
+                  <label htmlFor="" className="">
+                    Logo
+                  </label>
 
-                <input
-                  {...register("logo")}
-                  placeholder="Logo"
-                  type="text"
-                  className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
-                />
-                {errors.logo && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.logo.message}
-                  </p>
-                )}
-              </div>
-              {/* country */}
-              <div>
-                <label htmlFor="" className="">
-                  Country
-                </label>
+                  <input
+                    {...register("logo")}
+                    placeholder="Logo"
+                    type="text"
+                    className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
+                  />
+                  {errors.logo && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.logo.message}
+                    </p>
+                  )}
+                </div>
+                {/* country */}
+                <div className=" w-full">
+                  <label htmlFor="" className="">
+                    Country
+                  </label>
 
-                <input
-                  {...register("country")}
-                  placeholder="Country"
-                  type="text"
-                  className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
-                />
-                {errors.country && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.country.message}
-                  </p>
-                )}
+                  <input
+                    {...register("country")}
+                    placeholder="Country"
+                    type="text"
+                    className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
+                  />
+                  {errors.country && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.country.message}
+                    </p>
+                  )}
+                </div>
               </div>
 
               {/* Business type */}

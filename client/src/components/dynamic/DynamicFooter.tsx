@@ -12,7 +12,7 @@ const DynamicFooter = () => {
   const { tenant } = useParams();
 
   return (
-    <footer className="w-full h-full bg-amber-50 text-black pt-5">
+    <footer className="w-full h-full bg-white text-black pt-5">
       <Container>
         <div className="w-full h-full">
           {/* upper */}

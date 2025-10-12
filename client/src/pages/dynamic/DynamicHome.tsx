@@ -1,20 +1,16 @@
 import Container from "../../components/Container";
-import { Link, useParams } from "react-router-dom";
+import { Link,} from "react-router-dom";
 import { dynamicNavigation } from "../../utils/navLinks";
 import DynamicNavbar from "../../components/dynamic/DynamicNavbar";
 import DynamicFooter from "../../components/dynamic/DynamicFooter";
 
 const DynamicHome = () => {
-  const { tenant } = useParams();
+  
 
   return (
     <main className="w-full min-h-screen  ">
       <div
-        className={`w-full h-full ${
-          tenant === "fleurdevie"
-            ? "bg-[url('/images/background.webp')]"
-            : "bg-[url('/images/background2.webp')]"
-        } bg-cover bg-center bg-no-repeat flex flex-col relative`}
+        className={`w-full h-full bg-gradient-to-br from-pink-300 via-purple-500 to-indigo-00 flex flex-col relative`}
       >
         <div className="w-full ">
           <DynamicNavbar />

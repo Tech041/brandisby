@@ -5,6 +5,7 @@ import Socials from "../Socials";
 import { FaInstagram } from "react-icons/fa6";
 import { FiTwitter } from "react-icons/fi";
 import { tenantNavLinks } from "../../utils/navLinks";
+import {  FaUserAlt } from "react-icons/fa";
 
 const DynamicNavbar = () => {
   const { tenant } = useParams();
@@ -55,6 +56,16 @@ const DynamicNavbar = () => {
                   <FiTwitter size={30} color="white" />
                 </Socials>
               </li>
+              <div className="relative group">
+                <li className="">
+                  <Socials path="">
+                    < FaUserAlt  size={30} color="white" />
+                  </Socials>
+                </li>
+                <div className="absolute hidden group-hover:block bg-white text-black pt-4 px-2 rounded">
+                  <Link className="text-nowrap text-blue-500" to={`/${tenant}/sign-up`}>Sign Up</Link>
+                </div>
+              </div>
             </ul>
           </div>
         </div>

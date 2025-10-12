@@ -70,8 +70,8 @@ export const dynamicNavigation = [
     path: "about",
   },
   {
-    name: "Sign Up",
-    path: "sign-up",
+    name: "Shop",
+    path: "products",
   },
   {
     name: "Contact ",
