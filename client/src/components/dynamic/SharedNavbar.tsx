@@ -16,8 +16,8 @@ const SharedNavbar = () => {
   const { isMobileNavOpen, toggleMobileNav } = useUiStore();
   return (
     <header
-      className={`w-full h-[100px] bg-white text-primary-100 border-b border-b-gray-200  z-50 ${
-        isMobileNavOpen ? "fixed" : "relative"
+      className={`w-full h-[100px] bg-white text-primary-100 border-b border-dotted border-b-gray-200  z-50 ${
+        isMobileNavOpen ? "fixed top-0" : "relative"
       }`}
     >
       <Container>

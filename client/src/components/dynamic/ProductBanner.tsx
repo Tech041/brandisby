@@ -8,7 +8,7 @@ const ProductBanner = () => {
   return (
     <section className="w-full bg-gray-100">
       <Container>
-        <div className="w-full h-[300px] lg:h-[500px] flex flex-col sm:flex-row ">
+        <div className="w-full h-full lg:h-[400px] flex flex-col sm:flex-row ">
           <div className=" flex-1 flex flex-col justify-center">
             <h1 className="text-2xl md:text-3xl lg:text-5xl font-semibold pb-5">
               Products

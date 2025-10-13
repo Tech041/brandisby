@@ -105,8 +105,9 @@ const SharedFooter = () => {
           {/* lower */}
           <div className="">
             <p className="text-sm md:text-lg  text-center font-light">
-              {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
-              &copy; [{new Date().getFullYear()}] . All Rights Reserved.{" "}
+              &copy;
+              {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}[
+              {new Date().getFullYear()}] . All Rights Reserved.{" "}
             </p>
           </div>
         </div>
