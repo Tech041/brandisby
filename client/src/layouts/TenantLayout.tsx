@@ -1,8 +1,7 @@
 // src/layouts/TenantLayout.js
 import { Outlet } from "react-router-dom";
-import DynamicFooter from "../components/dynamic/DynamicFooter";
 import SharedNavbar from "../components/dynamic/SharedNavbar";
-
+import SharedFooter from "../components/dynamic/SharedFooter";
 
 const TenantLayout = () => {
   return (
@@ -11,7 +10,7 @@ const TenantLayout = () => {
       <div className="flex-grow min-h-screen">
         <Outlet />
       </div>
-      <DynamicFooter />
+      <SharedFooter />
     </main>
   );
 };

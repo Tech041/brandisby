@@ -56,19 +56,13 @@ const SharedNavbar = () => {
               </div>
 
               <li className="">
-                <Socials path="">
-                  <IoSearchOutline size={30} color="gray" />
-                </Socials>
+                <IoSearchOutline size={30} color="gray" />
               </li>
               <li className="">
-                <Socials path="">
-                  <CiHeart size={30} color="gray" />
-                </Socials>
+                <CiHeart size={30} color="gray" />
               </li>
               <li className="">
-                <Socials path="">
-                  <HiOutlineShoppingBag size={30} color="gray" />
-                </Socials>
+                <HiOutlineShoppingBag size={30} color="gray" />
               </li>
             </ul>
           </div>
@@ -98,8 +92,13 @@ const SharedNavbar = () => {
 
             <div
               onClick={toggleMobileNav}
-              className="flex justify-end items-center cursor-pointer z-50 "
+              className="flex justify-end items-center cursor-pointer gap-2 z-50  h-12 "
             >
+              {!isMobileNavOpen && (
+                <div className="pb-3">
+                  <HiOutlineShoppingBag size={30} color="gray" />
+                </div>
+              )}
               <div className="relative w-10 h-10">
                 {!isMobileNavOpen ? (
                   <GiHamburgerMenu size={30} color="gray" />
