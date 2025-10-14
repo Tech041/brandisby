@@ -9,11 +9,18 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { FaUserAlt } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineClose } from "react-icons/md";
+import { useCartStore } from "../../store/cartStore";
 
 const SharedNavbar = () => {
   const { tenant } = useParams();
 
   const { isMobileNavOpen, toggleMobileNav } = useUiStore();
+  const { cart } = useCartStore();
+  const itemCount = Object.values(cart).reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  );
+
   return (
     <header
       className={`w-full h-[100px] bg-white text-primary-100 border-b border-dotted border-b-gray-200  z-50 ${
@@ -61,8 +68,11 @@ const SharedNavbar = () => {
               <li className="">
                 <CiHeart size={30} color="gray" />
               </li>
-              <li className="">
+              <li className="relative">
                 <HiOutlineShoppingBag size={30} color="gray" />
+                <span className="absolute top-[-10px] right-0 bg-red-600 h-5 w-5 flex items-center justify-center text-sm text-white rounded-full">
+                  {itemCount}
+                </span>
               </li>
             </ul>
           </div>

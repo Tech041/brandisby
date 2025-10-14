@@ -1,28 +1,43 @@
 import { CiSearch } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 import { VscGitCompare } from "react-icons/vsc";
+import { Link, useParams } from "react-router-dom";
+import { useCartStore } from "../../store/cartStore";
+import type { Product } from "../../types/productTypes";
+
 interface ProductItemProp {
-  src: string;
-  title: string;
-  price: string;
+  product: Product;
 }
 
-const ProductItem = ({ src, title, price }: ProductItemProp) => {
+const ProductItem = ({ product }: ProductItemProp) => {
+  const { tenant } = useParams();
+  const { addToCart } = useCartStore();
+
   return (
     <div className="w-full h-[450px] border border-gray-100 rounded-md shadow-md">
       <div className="h-[70%] w-full ">
-        <img src={src} alt="product" className="w-full h-full" />
+        <img src={product.image} alt="product" className="w-full h-full" />
       </div>
       <div className="h-[30%]  ">
         <div className="w-full text-center py-2 ">
-          <p className="font-semibold">{title}</p>
-          <p className="font-light italic">#{price}</p>
+          <p className="font-semibold">{product.name}</p>
+          <p className="font-light italic flex justify-center gap-3">
+            <span className="line-through text-red-500">#{product.price}</span>
+            <span className="">#{product.price - 0.1 * product.price}</span>
+          </p>
         </div>
         <div className="flex items-center justify-evenly gap-3">
-          <span className="bg-black h-15 w-15 flex items-center justify-center rounded-full hover:bg-orange-900 cursor-pointer">
+          <Link
+            onClick={() => scrollTo(0, 0)}
+            to={`/${tenant}/product-details/${product._id}`}
+            className="bg-black h-15 w-15 flex items-center justify-center rounded-full hover:bg-orange-900 cursor-pointer"
+          >
             <CiSearch size={30} color="white" />
-          </span>{" "}
-          <span className="bg-black w-15 h-15 flex items-center justify-center rounded-full hover:bg-orange-900 cursor-pointer">
+          </Link>{" "}
+          <span
+            onClick={() => addToCart(product)}
+            className="bg-black w-15 h-15 flex items-center justify-center rounded-full hover:bg-orange-900 cursor-pointer"
+          >
             <IoCartOutline size={30} color="white" />
           </span>
           <span className="bg-black w-15 h-15 flex items-center justify-center rounded-full hover:bg-orange-900 cursor-pointer">

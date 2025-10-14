@@ -45,7 +45,10 @@ const App = () => {
           <Route path="sign-up" element={<Register />} />
           <Route path="sign-in" element={<Login />} />
           <Route path="products" element={<Products />} />
-          <Route path="products/:id" element={<ProductDetails />} />
+          <Route
+            path="product-details/:productId"
+            element={<ProductDetails />}
+          />
           {/* Add more tenant-specific routes here */}
         </Route>
 
