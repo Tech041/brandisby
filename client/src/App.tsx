@@ -14,6 +14,9 @@ const Login = React.lazy(() => import("./pages/dynamic/Login"));
 const SignIn = React.lazy(() => import("./pages/brandisby/SignIn"));
 const SignUp = React.lazy(() => import("./pages/brandisby/SignUp"));
 const Products = React.lazy(() => import("./pages/dynamic/Products"));
+const Cart = React.lazy(() => import("./pages/dynamic/Cart"));
+const Order = React.lazy(() => import("./pages/dynamic/Order"));
+
 const ProductDetails = React.lazy(
   () => import("./pages/dynamic/ProductDetails")
 );
@@ -45,6 +48,9 @@ const App = () => {
           <Route path="sign-up" element={<Register />} />
           <Route path="sign-in" element={<Login />} />
           <Route path="products" element={<Products />} />
+          <Route path="product/cart" element={<Cart />} />
+          <Route path="product/checkout" element={<Order />} />
+
           <Route
             path="product-details/:productId"
             element={<ProductDetails />}

@@ -69,10 +69,12 @@ const SharedNavbar = () => {
                 <CiHeart size={30} color="gray" />
               </li>
               <li className="relative">
-                <HiOutlineShoppingBag size={30} color="gray" />
-                <span className="absolute top-[-10px] right-0 bg-red-600 h-5 w-5 flex items-center justify-center text-sm text-white rounded-full">
-                  {itemCount}
-                </span>
+                <Link to={`/${tenant}/product/cart`}>
+                  <HiOutlineShoppingBag size={30} color="gray" />
+                  <span className="absolute top-[-10px] right-0 bg-red-600 h-5 w-5 flex items-center justify-center text-sm text-white rounded-full">
+                    {itemCount}
+                  </span>
+                </Link>
               </li>
             </ul>
           </div>
@@ -87,7 +89,7 @@ const SharedNavbar = () => {
             />
           )}
           <div className="w-full h-full flex justify-between items-center  ">
-            <div className="flex-1  cursor-pointer ">
+            <div className="flex-1   cursor-pointer ">
               <div className="w-[100px] h-[100px] rounded-md overflow-hidden">
                 <Link
                   className="w-full h-full flex flex-col justify-center"
@@ -99,16 +101,21 @@ const SharedNavbar = () => {
                 </Link>
               </div>
             </div>
+            {!isMobileNavOpen && (
+              <div className="pb-3 relative">
+                <Link to={`/${tenant}/product/cart`}>
+                  <HiOutlineShoppingBag size={30} color="gray" />
+                  <span className="absolute top-[-10px] right-0 bg-red-600 h-5 w-5 flex items-center justify-center text-sm text-white rounded-full">
+                    {itemCount}
+                  </span>
+                </Link>
+              </div>
+            )}
 
             <div
               onClick={toggleMobileNav}
               className="flex justify-end items-center cursor-pointer gap-2 z-50  h-12 "
             >
-              {!isMobileNavOpen && (
-                <div className="pb-3">
-                  <HiOutlineShoppingBag size={30} color="gray" />
-                </div>
-              )}
               <div className="relative w-10 h-10">
                 {!isMobileNavOpen ? (
                   <GiHamburgerMenu size={30} color="gray" />

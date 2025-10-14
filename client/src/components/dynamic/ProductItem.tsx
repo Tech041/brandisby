@@ -22,8 +22,7 @@ const ProductItem = ({ product }: ProductItemProp) => {
         <div className="w-full text-center py-2 ">
           <p className="font-semibold">{product.name}</p>
           <p className="font-light italic flex justify-center gap-3">
-            <span className="line-through text-red-500">#{product.price}</span>
-            <span className="">#{product.price - 0.1 * product.price}</span>
+            <span className="">#{product.price}</span>
           </p>
         </div>
         <div className="flex items-center justify-evenly gap-3">

@@ -15,6 +15,7 @@ const ProductGrid = () => {
       fetchProducts(tenant);
       setTenant(tenant);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tenant]);
   return (
     <section className="w-full h-full">

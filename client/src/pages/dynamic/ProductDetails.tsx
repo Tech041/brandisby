@@ -49,16 +49,10 @@ const ProductDetails = () => {
                   </h1>
                   <div className="">
                     <p className="text-2xl md:text-3xl  font-black py-4 flex gap-4">
-                      <span className="line-through text-red-500">
-                        $$
-                        {(cartItem?.price ?? item.price) *
-                          (cartItem?.quantity ?? 1)}
-                      </span>
                       <span className="">
                         $
                         {(cartItem?.price ?? item.price) *
-                          (cartItem?.quantity ?? 1) *
-                          0.9}
+                          (cartItem?.quantity ?? 1)}
                       </span>{" "}
                     </p>
                     <div className="w-full lg:w-1/2 flex items-center my-6  text-gray-500">
