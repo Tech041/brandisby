@@ -4,9 +4,10 @@ import { errorHandler } from "../utils/error.js";
 
 export const tenantOnboarding = async (req, res, next) => {
   const tenantInfo = req.body;
+  
 
   try {
-    const userId = req.user;
+    const { userId } = req.user;
     const user = await User.findById(userId);
     if (!user) {
       return next(errorHandler(401, "Register before creating store"));
@@ -20,6 +21,7 @@ export const tenantOnboarding = async (req, res, next) => {
       tenant,
     });
   } catch (error) {
+    console.log("Error onboarding", error);
     return next(errorHandler(500, "Error onboarding tenant"));
   }
 };

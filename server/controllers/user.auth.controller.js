@@ -44,11 +44,13 @@ export const registerUser = async (req, res, next) => {
     res.cookie("access_token", access_token, {
       httpOnly: true,
       sameSite: "none",
+      secure: true,
       maxAge: 5 * 60 * 1000,
     });
     res.cookie("refresh_token", refresh_token, {
       httpOnly: true,
       sameSite: "none",
+      secure: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -99,11 +101,13 @@ export const loginUser = async (req, res, next) => {
     res.cookie("access_token", access_token, {
       httpOnly: true,
       sameSite: "none",
-      maxAge: 5 * 60 * 1000,
+      secure: true,
+      maxAge: 30 * 60 * 1000,
     });
     res.cookie("refresh_token", refresh_token, {
       httpOnly: true,
       sameSite: "none",
+      secure: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -120,10 +124,7 @@ export const loginUser = async (req, res, next) => {
     });
   } catch (error) {
     next(
-      errorHandler(
-        500,
-        error.message || "Error occurred while signing in user"
-      )
+      errorHandler(500, error.message || "Error occurred while signing in user")
     );
   }
 };

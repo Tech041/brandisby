@@ -3,7 +3,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { onboardingSchema } from "../../schema/BrandisbyAuth";
 import Container from "../../components/Container";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import apiRequest from "../../utils/apiRequest";
 import { useTenantStore } from "../../store/tenantSore";
@@ -29,7 +29,7 @@ const Onboarding = () => {
       setLoading(true);
       const res = await apiRequest.post("/tenant-onboarding", data);
       if (res.data.success) {
-        navigate("/dashboard");
+        navigate(`/${res.data.tenant.brand}/dashboard`);
         reset();
         setMessage(res.data.message);
         setTenant(res.data.tenant);
@@ -138,13 +138,6 @@ const Onboarding = () => {
             >
               {loading ? "Submitting..." : "Submit Onboarding"}
             </button>
-
-            <p className="text-center text-sm text-gray-500 pt-2">
-              Already onboarded?{" "}
-              <Link to="/dashboard" className="text-blue-500 hover:underline">
-                Go to Dashboard
-              </Link>
-            </p>
           </form>
         </div>
       </Container>

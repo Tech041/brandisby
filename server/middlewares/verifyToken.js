@@ -3,6 +3,7 @@ import { errorHandler } from "../utils/error.js";
 
 export const verifyAccessToken = (req, res, next) => {
   const token = req.cookies?.access_token;
+
   if (!token) return next(errorHandler(400, "No access token found"));
 
   jwt.verify(token, process.env.ACCESS_SECRET, (err, payload) => {

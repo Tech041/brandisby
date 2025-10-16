@@ -5,6 +5,9 @@ import { ToastContainer } from "react-toastify";
 // Dynamic import or code splitting
 const Home = React.lazy(() => import("./pages/brandisby/Home"));
 const Dashboard = React.lazy(() => import("./pages/brandisby/Dashboard"));
+const TenantDashboard = React.lazy(
+  () => import("./pages/dynamic/TenantDashboard")
+);
 
 const Onboarding = React.lazy(() => import("./pages/brandisby/Onboarding"));
 
@@ -58,6 +61,7 @@ const App = () => {
             <Route path="products" element={<Products />} />
             <Route path="product/cart" element={<Cart />} />
             <Route path="product/checkout" element={<Order />} />
+            <Route path="dashboard" element={<TenantDashboard />} />
 
             <Route
               path="product-details/:productId"
