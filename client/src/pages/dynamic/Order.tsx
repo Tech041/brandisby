@@ -60,12 +60,12 @@ const Order = () => {
                     <span>
                       {item.name} × {item.quantity}
                     </span>
-                    <span>#{(item.price * item.quantity).toFixed(2)}</span>
+                    <span>₦{(item.price * item.quantity).toFixed(2)}</span>
                   </li>
                 ))}
                 <li className="flex justify-between font-bold text-lg pt-4">
                   <span>Total</span>
-                  <span>#{total.toFixed(2)}</span>
+                  <span>₦{total.toFixed(2)}</span>
                 </li>
               </ul>
             )}

@@ -2,22 +2,47 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Container from "../../components/Container";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerSchema } from "../../schema/BrandisbyAuth";
+import { useAuthStore } from "../../store/authStore";
+import { toast } from "react-toastify";
+import apiRequest from "../../utils/apiRequest";
+import { useState } from "react";
 
 type FormData = z.infer<typeof registerSchema>;
 
 const SignUp = () => {
+  const { setUser, setMessage } = useAuthStore();
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(registerSchema),
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log("Form submitted:", data);
+  const onSubmit = async (data: FormData) => {
+    try {
+      setLoading(true);
+      const res = await apiRequest.post("/auth/sign-up", data);
+      if (res.data.success) {
+        reset();
+        setUser(res.data.user);
+        setMessage(res.data.message);
+        toast.success(res.data.message);
+        navigate("/tenant-onboarding");
+      }
+    } catch (err) {
+      toast.error("Error signing up");
+      console.log("Error signing up", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -39,16 +64,16 @@ const SignUp = () => {
 
               <div>
                 <label htmlFor="" className="">
-                  Brand Name
+                  Name
                 </label>
                 <input
-                  {...register("brandname")}
-                  placeholder="Brand Name"
+                  {...register("name")}
+                  placeholder="Name"
                   className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
                 />
-                {errors.brandname && (
+                {errors.name && (
                   <p className="text-red-500 text-sm mt-1">
-                    {errors.brandname.message}
+                    {errors.name.message}
                   </p>
                 )}
               </div>
@@ -88,69 +113,13 @@ const SignUp = () => {
                   </p>
                 )}
               </div>
-              <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-3">
-                {/* logo */}
-                <div className=" w-full">
-                  <label htmlFor="" className="">
-                    Logo
-                  </label>
-
-                  <input
-                    {...register("logo")}
-                    placeholder="Logo"
-                    type="text"
-                    className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
-                  />
-                  {errors.logo && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.logo.message}
-                    </p>
-                  )}
-                </div>
-                {/* country */}
-                <div className=" w-full">
-                  <label htmlFor="" className="">
-                    Country
-                  </label>
-
-                  <input
-                    {...register("country")}
-                    placeholder="Country"
-                    type="text"
-                    className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
-                  />
-                  {errors.country && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.country.message}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              {/* Business type */}
-              <div>
-                <label htmlFor="" className="">
-                  Business Type
-                </label>
-
-                <input
-                  {...register("businessType")}
-                  placeholder="Business Type"
-                  type="text"
-                  className="w-full px-4 py-3 border border-green-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-green-300"
-                />
-                {errors.businessType && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.businessType.message}
-                  </p>
-                )}
-              </div>
 
               <button
                 type="submit"
                 className="w-full bg-black text-white py-3 rounded-full hover:bg-black/50"
+                disabled={loading}
               >
-                Sign Up
+                {loading ? "Signing Up" : "Sign Up"}{" "}
               </button>
             </form>
             <div className="pt-3 text-sm">

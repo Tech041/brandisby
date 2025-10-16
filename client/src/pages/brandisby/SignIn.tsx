@@ -2,23 +2,46 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Container from "../../components/Container";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginSchema } from "../../schema/BrandisbyAuth";
-
+import apiRequest from "../../utils/apiRequest";
+import { useAuthStore } from "../../store/authStore";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 type FormData = z.infer<typeof loginSchema>;
 
 const SignIn = () => {
+  const { setUser, setMessage } = useAuthStore();
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log("Form submitted:", data);
+  const onSubmit = async (data: FormData) => {
+    try {
+      setLoading(true);
+      const res = await apiRequest.post("/auth/sign-in", data);
+      if (res.data.success) {
+        reset();
+        setUser(res.data.user);
+        setMessage(res.data.message);
+        toast.success(res.data.message);
+        navigate("/tenant-onboarding");
+      }
+    } catch (err) {
+      toast.error("Error signing In");
+      console.log("Error signing in", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -77,8 +100,9 @@ const SignIn = () => {
               <button
                 type="submit"
                 className="w-full bg-black text-white py-3 rounded-full hover:bg-black/50"
+                disabled={loading}
               >
-                Sign In
+                {loading ? "Signing In" : "Sign In"}
               </button>
             </form>
             <div className="pt-3 text-sm">

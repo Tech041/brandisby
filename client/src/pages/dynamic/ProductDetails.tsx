@@ -50,7 +50,7 @@ const ProductDetails = () => {
                   <div className="">
                     <p className="text-2xl md:text-3xl  font-black py-4 flex gap-4">
                       <span className="">
-                        $
+                        ₦
                         {(cartItem?.price ?? item.price) *
                           (cartItem?.quantity ?? 1)}
                       </span>{" "}

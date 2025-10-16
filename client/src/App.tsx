@@ -1,9 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 // Dynamic import or code splitting
 const Home = React.lazy(() => import("./pages/brandisby/Home"));
 const Dashboard = React.lazy(() => import("./pages/brandisby/Dashboard"));
+
+const Onboarding = React.lazy(() => import("./pages/brandisby/Onboarding"));
+
 const BrandisbyLayout = React.lazy(() => import("./layouts/BrandisbyLayout"));
 const DynamicLayout = React.lazy(() => import("./layouts/DynamicLayout"));
 const TenantLayout = React.lazy(() => import("./layouts/TenantLayout"));
@@ -28,40 +32,45 @@ const NotFound = React.lazy(() => import("./pages/brandisby/NotFound"));
 
 const App = () => {
   return (
-    <Routes>
-      {/* Brandisby Layout */}
-      <Route path="/" element={<BrandisbyLayout />}>
-        <Route index element={<Home />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="login" element={<SignIn />} />
-        <Route path="register" element={<SignUp />} />
-      </Route>
+    <>
+      <ToastContainer />
 
-      {/* Dynamic layout */}
-      <Route path="/:tenant/*" element={<DynamicLayout />}>
-        {/* Landing page with its own navbar and footer */}
-        <Route index element={<DynamicHome />} />
-
-        {/* Shared layout for other tenant pages */}
-        <Route element={<TenantLayout />}>
-          <Route path="sign-up" element={<Register />} />
-          <Route path="sign-in" element={<Login />} />
-          <Route path="products" element={<Products />} />
-          <Route path="product/cart" element={<Cart />} />
-          <Route path="product/checkout" element={<Order />} />
-
-          <Route
-            path="product-details/:productId"
-            element={<ProductDetails />}
-          />
-          {/* Add more tenant-specific routes here */}
+      <Routes>
+        {/* Brandisby Layout */}
+        <Route path="/" element={<BrandisbyLayout />}>
+          <Route index element={<Home />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="login" element={<SignIn />} />
+          <Route path="register" element={<SignUp />} />
+          <Route path="tenant-onboarding" element={<Onboarding />} />
         </Route>
 
-        {/* Catch-all for unknown tenant routes */}
-        <Route path="*" element={<DynamicNotFound />} />
-      </Route>
-    </Routes>
+        {/* Dynamic layout */}
+        <Route path="/:tenant/*" element={<DynamicLayout />}>
+          {/* Landing page with its own navbar and footer */}
+          <Route index element={<DynamicHome />} />
+
+          {/* Shared layout for other tenant pages */}
+          <Route element={<TenantLayout />}>
+            <Route path="sign-up" element={<Register />} />
+            <Route path="sign-in" element={<Login />} />
+            <Route path="products" element={<Products />} />
+            <Route path="product/cart" element={<Cart />} />
+            <Route path="product/checkout" element={<Order />} />
+
+            <Route
+              path="product-details/:productId"
+              element={<ProductDetails />}
+            />
+            {/* Add more tenant-specific routes here */}
+          </Route>
+
+          {/* Catch-all for unknown tenant routes */}
+          <Route path="*" element={<DynamicNotFound />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
 

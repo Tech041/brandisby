@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import Container from "../../components/Container";
 import { useCartStore } from "../../store/cartStore";
 import { useParams, useNavigate } from "react-router-dom";
+import { FaRegTrashCan } from "react-icons/fa6";
+
 
 const Cart = () => {
   const { tenant } = useParams();
@@ -19,11 +21,11 @@ const Cart = () => {
     if (tenant) {
       setTenant(tenant);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tenant]);
 
   const handleCheckout = () => {
-    // You can replace this with actual checkout logic
+    
     navigate(`/${tenant}/product/checkout`);
   };
 
@@ -43,13 +45,24 @@ const Cart = () => {
                   key={item._id}
                   className="flex justify-between items-center border-b pb-4"
                 >
-                  <div>
-                    <p className="font-semibold text-sm lg:text-lg text-gray-700">
-                      {item.name}
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      #{(item.price - item.price / 10) * item.quantity}
-                    </p>
+                  <div className="flex">
+                    <div className="flex-[3]">
+                      <p className="font-semibold text-sm lg:text-lg text-gray-700">
+                        {item.name}
+                      </p>
+                      <p className="text-sm text-gray-500 ">
+                        <span className="">
+                          ₦{(item.price - item.price / 10) * item.quantity}
+                        </span>
+                      </p>
+                    </div>
+                    <div className="flex-1 hidden lg:block">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="h-10 w-10"
+                      />
+                    </div>
                   </div>
                   <div className="flex gap-2 items-center">
                     <button
@@ -69,20 +82,18 @@ const Cart = () => {
                     >
                       +
                     </button>
-                    <button
+                    <span
                       onClick={() => removeFromCart(item._id)}
                       className="ml-4 text-red-500 hover:text-red-700 text-sm cursor-pointer"
                     >
-                      Remove
-                    </button>
+                      <FaRegTrashCan size={20} />
+                    </span>
                   </div>
                 </div>
               ))}
-              <div className="text-right font-bold text-2xl mt-6 text-gray-800">
-                Total:{" "}
-                <span className="">
-                  #{totalBeforeDiscount.toFixed(2)}
-                </span>
+              <div className="text-right font-bold text-2xl mt-6 text-gray-800 ">
+                Total:
+                <span className=""> ₦{totalBeforeDiscount.toFixed(2)}</span>
               </div>
               <div className="flex justify-end mt-6">
                 <button
