@@ -69,7 +69,7 @@ const SharedNavbar = () => {
                 <CiHeart size={30} color="gray" />
               </li>
               <li className="relative">
-                <Link to={`/${tenant}/product/cart`}>
+                <Link to={`/${tenant}/cart`}>
                   <HiOutlineShoppingBag size={30} color="gray" />
                   <span className="absolute top-[-10px] right-0 bg-red-600 h-5 w-5 flex items-center justify-center text-sm text-white rounded-full">
                     {itemCount}
@@ -103,7 +103,7 @@ const SharedNavbar = () => {
             </div>
             {!isMobileNavOpen && (
               <div className="pb-3 relative">
-                <Link to={`/${tenant}/product/cart`}>
+                <Link to={`/${tenant}/cart`}>
                   <HiOutlineShoppingBag size={30} color="gray" />
                   <span className="absolute top-[-10px] right-0 bg-red-600 h-5 w-5 flex items-center justify-center text-sm text-white rounded-full">
                     {itemCount}
