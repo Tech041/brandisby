@@ -10,6 +10,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineClose } from "react-icons/md";
 import { useCartStore } from "../../store/cartStore";
+import CartSideBar from "../../pages/dynamic/CartSideBar";
 
 const SharedNavbar = () => {
   const { tenant } = useParams();
@@ -34,13 +35,12 @@ const SharedNavbar = () => {
         <div className="w-full h-full">
           <div className="hidden w-full h-full md:flex items-center gap-5">
             {/* for shadow when navbar is open */}
-            {isMobileNavOpen ||
-              (isCartSideBarOpen && (
-                <div
-                  onClick={toggleMobileNav}
-                  className="fixed top-0 left-0 w-full h-screen bg-black/50 transition-opacity duration-700"
-                />
-              ))}
+            {isCartSideBarOpen && (
+              <div
+                onClick={toggleCartSideBar}
+                className="fixed top-0 left-0 w-full h-screen bg-black/50 transition-opacity duration-700"
+              />
+            )}
             {/* logo */}
             <div className="flex-1">
               <div className="w-[200px]  rounded-md overflow-hidden">
@@ -79,7 +79,10 @@ const SharedNavbar = () => {
                 <li className="">
                   <CiHeart size={30} color="gray" />
                 </li>
-                <li onClick={toggleCartSideBar} className="relative">
+                <li
+                  onClick={toggleCartSideBar}
+                  className="relative cursor-pointer"
+                >
                   <HiOutlineShoppingBag size={30} color="gray" />
                   <span className="absolute top-[-10px] right-0 bg-red-600 h-5 w-5 flex items-center justify-center text-sm text-white rounded-full">
                     {itemCount}
@@ -95,7 +98,7 @@ const SharedNavbar = () => {
               isCartSideBarOpen ? " right-0 " : "right-[-100%]"
             } absolute  top-0 w-full xs:w-[70%]  md:w-[50%] z-50  h-screen flex flex-col space-y-10  bg-white  transition-all duration-700 text-gray-600 px-8 `}
           >
-            <div className="w-full flex justify-between mt-10">
+            <div className="w-full flex justify-between mt-10 border-b border-gray-300 pb-3">
               <div className="">
                 <h2 className="text-xl font-semibold">Cart</h2>
               </div>
@@ -111,19 +114,21 @@ const SharedNavbar = () => {
                 <span className="absolute top-1/2 left-0 w-full h-[2px] bg-black transform -rotate-45 transition-all duration-300 group-hover:rotate-0 group-hover:top-[55%]" />
               </div>
             </div>
-            <div className=" bg-red-500 text-white">Items are here</div>
+            <div className="">
+              <CartSideBar />
+            </div>
           </div>
         </div>
         {/* mobile navbar */}
         <div className="w-full h-full flex md:hidden   ">
           {/* for shadow when navbar is open */}
-          {isMobileNavOpen ||
-            (isCartSideBarOpen && (
-              <div
-                onClick={toggleMobileNav}
-                className="fixed top-0 left-0 w-full h-screen bg-black/50 transition-opacity duration-700"
-              />
-            ))}
+          {isMobileNavOpen && (
+            <div className="fixed top-0 left-0 w-full h-screen bg-black/50 transition-opacity duration-700" />
+          )}
+          {/* for shadow when cart side bar is open */}
+          {isCartSideBarOpen && (
+            <div className="fixed top-0 left-0 w-full h-screen bg-black/50 transition-opacity duration-700" />
+          )}
           <div className="w-full h-full flex justify-between items-center  ">
             <div className="flex-1   cursor-pointer ">
               <div className="w-[100px] h-[100px] rounded-md overflow-hidden">
@@ -138,7 +143,10 @@ const SharedNavbar = () => {
               </div>
             </div>
             {!isMobileNavOpen && (
-              <div onClick={toggleCartSideBar} className="pb-3 relative">
+              <div
+                onClick={toggleCartSideBar}
+                className="pb-3 relative cursor-pointer"
+              >
                 <HiOutlineShoppingBag size={30} color="gray" />
                 <span className="absolute top-[-10px] right-0 bg-red-600 h-5 w-5 flex items-center justify-center text-sm text-white rounded-full">
                   {itemCount}
@@ -191,7 +199,7 @@ const SharedNavbar = () => {
               isCartSideBarOpen ? " right-0 " : "right-[-100%]"
             } absolute  top-0 w-full xs:w-[70%]  md:w-[50%] z-50  h-screen flex flex-col space-y-10  bg-white  transition-all duration-700 text-gray-600 px-8 `}
           >
-            <div className="w-full flex justify-between mt-10">
+            <div className="w-full flex justify-between mt-10 border-b border-gray-300 pb-3">
               <div className="">
                 <h2 className="text-xl font-semibold">Cart</h2>
               </div>
@@ -207,7 +215,11 @@ const SharedNavbar = () => {
                 <span className="absolute top-1/2 left-0 w-full h-[2px] bg-black transform -rotate-45 transition-all duration-300 group-hover:rotate-0 group-hover:top-[55%]" />
               </div>
             </div>
-            <div className=" bg-red-500 text-white">Items are here</div>
+            <div className="w-full ">
+              <CartSideBar />
+          
+
+            </div>
           </div>
         </div>
       </Container>
