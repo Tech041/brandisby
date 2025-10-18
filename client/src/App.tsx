@@ -35,7 +35,7 @@ const NotFound = React.lazy(() => import("./pages/brandisby/NotFound"));
 
 const App = () => {
   return (
-    <>
+    <div className="w-full h-full overflow-x-hidden">
       <ToastContainer />
 
       <Routes>
@@ -74,7 +74,7 @@ const App = () => {
           <Route path="*" element={<DynamicNotFound />} />
         </Route>
       </Routes>
-    </>
+    </div>
   );
 };
 
