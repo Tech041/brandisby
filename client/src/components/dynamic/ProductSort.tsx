@@ -22,10 +22,10 @@ const ProductSort = () => {
       <Container>
         <div className="w-full h-full flex flex-col sm:flex-row justify-between">
           <div className="">
-            <h2 className="text-2xl font-semibold ">Categories</h2>
+            <h2 className="text-sm md:text-xl lg:text-2xl font-medium pb-1">Categories</h2>
             <select
               onChange={handleSortByCategory}
-              className="border py-1 lg:py-3 px-2 lg:px-4"
+              className="border py-1 lg:py-3 px-2 lg:px-4 cursor-pointer"
             ><option value="all">All</option>
               {categories.map((cat) => (
                 <option className="capitalize" key={cat} value={cat}>
@@ -34,11 +34,11 @@ const ProductSort = () => {
               ))}
             </select>
           </div>{" "}
-          <div className="text-gray-500 flex flex-col sm:flex-row  sm:items-center pt-5 md:pt-0">
+          <div className="text-gray-500 flex flex-col sm:flex-row  sm:items-center pt-3 md:pt-0">
             <span className="text-sm md:text-base pr-1">Sort by:</span>
             <select
               onChange={handleSortChange}
-              className="border py-1 lg:py-3 px-2 lg:px-4"
+              className="border py-1 lg:py-3 px-2 lg:px-4 cursor-pointer"
             >
               <option value="asc" className="text-sm">
                 Price,low to high
