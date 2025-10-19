@@ -1,12 +1,14 @@
-
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Product } from "../types/productTypes";
 
 interface ProductState {
   products: Product[];
+  allProducts: Product[];
   isLoading: boolean;
   fetchProducts: (tenant: string) => Promise<void>;
+  sortProducts: (order: "asc" | "desc") => void;
+  sortByCategory: (category: string) => void;
 }
 
 const mockApiCall = (): Promise<Product[]> =>
@@ -20,7 +22,7 @@ const mockApiCall = (): Promise<Product[]> =>
             "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
           price: 150,
           image: "/images/image1.jpeg",
-          category: "Women",
+          category: "men",
           tenant: "fleurdevie",
           date: 1716634345448,
         },
@@ -31,7 +33,7 @@ const mockApiCall = (): Promise<Product[]> =>
             "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
           price: 600,
           image: "/images/image2.jpeg",
-          category: "Women",
+          category: "women",
           tenant: "serac",
           date: 1716634345448,
         },
@@ -42,7 +44,7 @@ const mockApiCall = (): Promise<Product[]> =>
             "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
           price: 300,
           image: "/images/image3.jpeg",
-          category: "Women",
+          category: "men",
           tenant: "fleurdevie",
           date: 1716634345448,
         },
@@ -53,7 +55,7 @@ const mockApiCall = (): Promise<Product[]> =>
             "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
           price: 1000,
           image: "/images/image4.jpeg",
-          category: "Women",
+          category: "child",
           tenant: "fleurdevie",
           date: 1716634345448,
         },
@@ -64,7 +66,7 @@ const mockApiCall = (): Promise<Product[]> =>
             "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
           price: 1050,
           image: "/images/image5.jpeg",
-          category: "Women",
+          category: "men",
           tenant: "fleurdevie",
           date: 1716634345448,
         },
@@ -75,7 +77,7 @@ const mockApiCall = (): Promise<Product[]> =>
             "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
           price: 1100,
           image: "/images/image6.jpeg",
-          category: "Women",
+          category: "men",
           tenant: "serac",
           date: 1716634345448,
         },
@@ -86,7 +88,7 @@ const mockApiCall = (): Promise<Product[]> =>
             "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
           price: 1400,
           image: "/images/product.jpeg",
-          category: "Women",
+          category: "babies",
           tenant: "serac",
           date: 1716634345448,
         },
@@ -96,14 +98,35 @@ const mockApiCall = (): Promise<Product[]> =>
 
 export const useProductStore = create<ProductState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       products: [],
+      allProducts: [],
       isLoading: false,
       fetchProducts: async (tenant: string) => {
         set({ isLoading: true });
         const data = await mockApiCall();
         const filtered = data.filter((product) => product.tenant === tenant);
-        set({ products: filtered, isLoading: false });
+        set({ products: filtered, allProducts: filtered, isLoading: false });
+      },
+      // Sort products by price
+      sortProducts: (order) => {
+        const sorted = [...get().products].sort((a, b) =>
+          order === "asc" ? a.price - b.price : b.price - a.price
+        );
+        set({ products: sorted });
+      },
+      // sort by category
+      sortByCategory: (category) => {
+        const { allProducts } = get();
+
+        if (category === "all") {
+          set({ products: allProducts });
+        } else {
+          const filtered = allProducts.filter(
+            (p) => p.category.toLowerCase() === category.toLowerCase()
+          );
+          set({ products: filtered });
+        }
       },
     }),
     {

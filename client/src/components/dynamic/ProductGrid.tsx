@@ -15,7 +15,7 @@ const ProductGrid = () => {
       fetchProducts(tenant);
       setTenant(tenant);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tenant]);
   return (
     <section className="w-full h-full">
@@ -25,7 +25,7 @@ const ProductGrid = () => {
         ) : (
           <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {products.map((product) => (
-              <ProductItem product={product} />
+              <ProductItem key={product._id} product={product} />
             ))}
           </div>
         )}
