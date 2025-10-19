@@ -28,13 +28,13 @@ const ProductSort = () => {
               className="border py-1 lg:py-3 px-2 lg:px-4"
             ><option value="all">All</option>
               {categories.map((cat) => (
-                <option key={cat} value={cat}>
+                <option className="capitalize" key={cat} value={cat}>
                   {cat}
                 </option>
               ))}
             </select>
           </div>{" "}
-          <div className="text-gray-500 flex flex-col sm:flex-row pt-5 md:pt-0">
+          <div className="text-gray-500 flex flex-col sm:flex-row  sm:items-center pt-5 md:pt-0">
             <span className="text-sm md:text-base pr-1">Sort by:</span>
             <select
               onChange={handleSortChange}

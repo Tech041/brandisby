@@ -4,6 +4,7 @@ import { VscGitCompare } from "react-icons/vsc";
 import { Link, useParams } from "react-router-dom";
 import { useCartStore } from "../../store/cartStore";
 import type { Product } from "../../types/productTypes";
+import { motion } from "framer-motion";
 
 interface ProductItemProp {
   product: Product;
@@ -14,18 +15,29 @@ const ProductItem = ({ product }: ProductItemProp) => {
   const { addToCart } = useCartStore();
 
   return (
-    <div className="w-full h-[450px] border border-gray-100 rounded-md shadow-md">
+    <div className="w-full h-[350px] border border-gray-300 cursor-pointer group">
       <div className="h-[70%] w-full ">
-        <img src={product.image} alt="product" className="w-full h-full" />
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-90"
+        />
       </div>
-      <div className="h-[30%]  ">
-        <div className="w-full text-center py-2 ">
+      <div className="h-[30%]   ">
+        <div className="w-full text-center py-2 group-hover:hidden ">
           <p className="font-semibold">{product.name}</p>
           <p className="font-light italic flex justify-center gap-3">
             <span className="">₦{product.price}</span>
           </p>
         </div>
-        <div className="flex items-center justify-evenly gap-3">
+
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: false }}
+          className="hidden group-hover:flex items-center justify-evenly gap-3"
+        >
           <Link
             onClick={() => scrollTo(0, 0)}
             to={`/${tenant}/product-details/${product._id}`}
@@ -42,7 +54,7 @@ const ProductItem = ({ product }: ProductItemProp) => {
           <span className="bg-black w-15 h-15 flex items-center justify-center rounded-full hover:bg-orange-900 cursor-pointer">
             <VscGitCompare size={30} color="white" />
           </span>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
