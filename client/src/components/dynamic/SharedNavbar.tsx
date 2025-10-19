@@ -96,7 +96,7 @@ const SharedNavbar = () => {
           <div
             className={` ${
               isCartSideBarOpen ? " right-0 " : "right-[-100%]"
-            } absolute  top-0 w-full xs:w-[70%]  md:w-[50%] z-50  h-screen flex flex-col space-y-10  bg-white  transition-all duration-700 text-gray-600 px-8 `}
+            } absolute  top-0 w-[50%] z-50  h-screen flex flex-col space-y-10  bg-white  transition-all duration-700 text-gray-600 px-8 `}
           >
             <div className="w-full flex justify-between mt-10 border-b border-gray-300 pb-3">
               <div className="">
@@ -167,7 +167,7 @@ const SharedNavbar = () => {
               </div>
             </div>
           </div>
-          {/* For Navbar */}
+          {/* For mobile Navbar */}
           <nav
             className={` ${
               isMobileNavOpen ? "left-0 right-0" : "left-[-100%]"
@@ -197,7 +197,7 @@ const SharedNavbar = () => {
           <div
             className={` ${
               isCartSideBarOpen ? " right-0 " : "right-[-100%]"
-            } absolute  top-0 w-full xs:w-[70%]  md:w-[50%] z-50  h-screen flex flex-col space-y-10  bg-white  transition-all duration-700 text-gray-600 px-8 `}
+            } absolute  top-0 w-full xs:w-[70%]  z-50  h-screen flex flex-col space-y-10  bg-white  transition-all duration-700 text-gray-600 px-8 `}
           >
             <div className="w-full flex justify-between mt-10 border-b border-gray-300 pb-3">
               <div className="">
@@ -217,8 +217,6 @@ const SharedNavbar = () => {
             </div>
             <div className="w-full ">
               <CartSideBar />
-          
-
             </div>
           </div>
         </div>

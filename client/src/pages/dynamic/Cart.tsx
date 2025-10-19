@@ -130,7 +130,6 @@ const Cart = () => {
                     </tbody>
                   </table>
                 </div>
-                
               </>
             )}
           </div>
