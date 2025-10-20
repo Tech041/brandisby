@@ -22,7 +22,7 @@ const SignIn = React.lazy(() => import("./pages/brandisby/SignIn"));
 const SignUp = React.lazy(() => import("./pages/brandisby/SignUp"));
 const Products = React.lazy(() => import("./pages/dynamic/Products"));
 const Cart = React.lazy(() => import("./pages/dynamic/Cart"));
-const Order = React.lazy(() => import("./pages/dynamic/Order"));
+const Checkout = React.lazy(() => import("./pages/dynamic/Checkout"));
 
 const ProductDetails = React.lazy(
   () => import("./pages/dynamic/ProductDetails")
@@ -60,7 +60,7 @@ const App = () => {
             <Route path="sign-in" element={<Login />} />
             <Route path="products" element={<Products />} />
             <Route path="cart" element={<Cart />} />
-            <Route path="checkout" element={<Order />} />
+            <Route path="checkout" element={<Checkout />} />
             <Route path="dashboard" element={<TenantDashboard />} />
 
             <Route

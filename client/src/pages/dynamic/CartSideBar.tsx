@@ -73,10 +73,10 @@ const CartSideBar = () => {
               <button
                 onClick={handleCheckout}
                 disabled={!isChecked}
-                className={`w-full py-1 sm:py-2 lg:py-3 px-4  uppercase border border-gray-300 rounded-full font-semibold transition-colors cursor-pointer  ${
+                className={`w-full py-1 sm:py-2 lg:py-3 px-4  uppercase  rounded-full font-semibold transition-colors cursor-pointer  ${
                   isChecked
-                    ? " text-black "
-                    : "text-gray-400 cursor-not-allowed"
+                    ? " text-black border border-black "
+                    : "text-gray-400 cursor-not-allowed border border-gray-300"
                 }`}
               >
                 Checkout
