@@ -6,7 +6,7 @@ const ProductBanner = () => {
   const { tenant } = useParams();
 
   return (
-    <section className="w-full bg-gray-100">
+    <section className="w-full bg-gray-200">
       <Container>
         <div className="w-full h-full lg:h-[400px] flex flex-col sm:flex-row ">
           <div className=" flex-1 flex flex-col justify-center">
@@ -24,7 +24,7 @@ const ProductBanner = () => {
           <div className=" flex-[3] flex items-center justify-center sm:justify-end">
             <div className=" w-full sm:w-[80%] h-[95%]">
               <img
-                src="/images/product.jpeg"
+                src="/images/product_hero.webp"
                 alt="product"
                 className="w-full h-full object-center"
               />

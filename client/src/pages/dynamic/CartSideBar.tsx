@@ -40,7 +40,7 @@ const CartSideBar = () => {
         <p className="text-lg font-semibold text-red-400">Cart is empty</p>
       ) : (
         <div className="w-full h-screen  px-3">
-          <div className=" max-h-[150px] md:max-h-[350px] overflow-y-auto ">
+          <div className=" max-h-[40%] sm:max-h-[50%] overflow-y-auto ">
             {items.map((item) => (
               <CartSideBarItem
                 key={item._id}
@@ -58,7 +58,7 @@ const CartSideBar = () => {
             </div>
           </div>
           {/* Lower part */}
-          <div className="w-full mt-10">
+          <div className="w-full mt-5 md:mt-10 ">
             <div className="flex flex-col gap-4">
               <label className="flex items-center gap-2">
                 <input
@@ -82,7 +82,7 @@ const CartSideBar = () => {
                 Checkout
               </button>
             </div>
-            <div className="w-full mt-5">
+            <div className="w-full mt-1 md:mt-5">
               <button
                 onClick={handleNavigateToCartPage}
                 className={`w-full py-1 sm:py-2 lg:py-3 px-4 bg-black uppercase text-white hover:bg-black/50  border border-gray-300 rounded-full font-semibold transition-colors cursor-pointer 

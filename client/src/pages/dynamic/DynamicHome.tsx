@@ -1,16 +1,14 @@
 import Container from "../../components/Container";
-import { Link,} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { dynamicNavigation } from "../../utils/navLinks";
 import DynamicNavbar from "../../components/dynamic/DynamicNavbar";
 import DynamicFooter from "../../components/dynamic/DynamicFooter";
 
 const DynamicHome = () => {
-  
-
   return (
     <main className="w-full min-h-screen  ">
       <div
-        className={`w-full h-full bg-gradient-to-br from-pink-300 via-purple-500 to-indigo-00 flex flex-col relative`}
+        className={`w-full h-full bg-[url('/images/tenant_hero.webp')] bg-center bg-cover bg-no-repeat flex flex-col relative`}
       >
         <div className="w-full ">
           <DynamicNavbar />
@@ -23,10 +21,10 @@ const DynamicHome = () => {
                   {dynamicNavigation.map((link) => (
                     <li
                       key={link.name}
-                      className=" text-6xl lg:text-[100px]  text-white"
+                      className=" text-6xl lg:text-[100px]  text-gray-700"
                     >
                       <Link
-                        className="border-b-2 border-b-gray-50 "
+                        className="border-b-2 border-b-gray-300 "
                         to={link.path}
                       >
                         {link.name}
@@ -35,7 +33,7 @@ const DynamicHome = () => {
                   ))}
                 </ul>
               </div>
-              <p className="text-white text-xl lg:text-2xl mt-10 px-2 text-center ">
+              <p className="text-gray-800 text-xl lg:text-2xl mt-10 px-2 text-center ">
                 123 Demo Street — New York, NY — (555) 555-5555
               </p>
             </div>

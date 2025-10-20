@@ -13,7 +13,7 @@ const DynamicNavbar = () => {
   const { isMobileNavOpen, toggleMobileNav } = useUiStore();
   return (
     <header
-      className={`w-full h-[150px] text-white  z-50 ${
+      className={`w-full h-[150px] text-black  z-50 ${
         isMobileNavOpen ? "fixed" : "relative"
       }`}
     >
@@ -32,7 +32,7 @@ const DynamicNavbar = () => {
                   className="w-full h-full object-cover"
                   alt="logo"
                 /> */}
-                <span className="text-4xl font-semibold text-white">
+                <span className="text-4xl font-semibold text-gray-900">
                   {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
                 </span>
               </Link>
@@ -48,22 +48,22 @@ const DynamicNavbar = () => {
               ))}
               <li className="">
                 <Socials path="">
-                  <FaInstagram size={30} color="white" />
+                  <FaInstagram size={30} color="gray" />
                 </Socials>
               </li>
               <li className="">
                 <Socials path="">
-                  <FiTwitter size={30} color="white" />
+                  <FiTwitter size={30} color="gray" />
                 </Socials>
               </li>
               <div className="relative group">
                 <li className="">
                   <Socials path="">
-                    < FaUserAlt  size={30} color="white" />
+                    < FaUserAlt  size={30} color="black" />
                   </Socials>
                 </li>
-                <div className="absolute hidden group-hover:block bg-white text-black pt-4 px-2 rounded">
-                  <Link className="text-nowrap text-blue-500" to={`/${tenant}/sign-up`}>Sign Up</Link>
+                <div className="absolute hidden group-hover:block bg-gray-50 text-black pt-4 px-2 rounded">
+                  <Link className="text-nowrap text-gray-700" to={`/${tenant}/sign-up`}>Sign Up</Link>
                 </div>
               </div>
             </ul>
@@ -87,7 +87,7 @@ const DynamicNavbar = () => {
                     className="w-full h-[30px] object-cover"
                     alt="logo"
                   />
-                  <span className="text-sm text-center text-white">
+                  <span className="text-sm text-center text-gray-900">
                     {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
                   </span>
                 </Link>
@@ -101,11 +101,11 @@ const DynamicNavbar = () => {
               <div className="relative w-10 h-6">
                 <span
                   className={`block absolute h-0.5 w-full  transform transition duration-300 ease-in-out
-        ${isMobileNavOpen ? "rotate-45 top-2.5 bg-black" : "top-1 bg-white"}`}
+        ${isMobileNavOpen ? "rotate-45 top-2.5 bg-black" : "top-1 bg-black"}`}
                 />
                 <span
                   className={`block absolute h-0.5 w-full  transform transition duration-300 ease-in-out
-        ${isMobileNavOpen ? "-rotate-45 top-2.5 bg-black" : "top-4 bg-white"}`}
+        ${isMobileNavOpen ? "-rotate-45 top-2.5 bg-black" : "top-4 bg-black"}`}
                 />
               </div>
             </div>
