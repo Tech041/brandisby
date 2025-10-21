@@ -11,7 +11,7 @@ const ShippingForm = () => {
   const navigate = useNavigate();
   const { tenant } = useParams();
 
-  const { cart } = useCartStore();
+  const { cart, clearCart } = useCartStore();
   const items = Object.values(cart);
   const total = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -41,6 +41,7 @@ const ShippingForm = () => {
         // You can verify the transaction on your backend here
         // I will call payment confirmation endpoint here, if it is confirmed, i will proceed to this response below
         if (response.status === "success") {
+          clearCart();
           navigate(`/${tenant}/payment-success`, {
             state: {
               items,

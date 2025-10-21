@@ -9,7 +9,7 @@ const PaymentSuccess = () => {
   const { items, total, reference } = location.state || {};
 
   return (
-    <main className="w-full">
+    <main className="w-full min-h-screen flex justify-center items-center">
       <Container>
         <div className="max-w-2xl mx-auto p-6 text-center">
           <h1 className="text-2xl font-bold text-green-600 mb-4">
