@@ -23,6 +23,9 @@ const SignUp = React.lazy(() => import("./pages/brandisby/SignUp"));
 const Products = React.lazy(() => import("./pages/dynamic/Products"));
 const Cart = React.lazy(() => import("./pages/dynamic/Cart"));
 const Checkout = React.lazy(() => import("./pages/dynamic/Checkout"));
+const PaymentSuccess = React.lazy(
+  () => import("./pages/dynamic/PaymentSuccess")
+);
 
 const ProductDetails = React.lazy(
   () => import("./pages/dynamic/ProductDetails")
@@ -62,6 +65,7 @@ const App = () => {
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
             <Route path="dashboard" element={<TenantDashboard />} />
+            <Route path="payment-success" element={<PaymentSuccess />} />
 
             <Route
               path="product-details/:productId"

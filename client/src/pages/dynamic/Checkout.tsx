@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import ShippingForm from "../../components/dynamic/ShippingForm";
-import FlutterwaveForm from "../../components/dynamic/FlutterwaveForm";
-
 
 const Checkout = () => {
   const { tenant } = useParams();
@@ -96,7 +94,6 @@ const Checkout = () => {
           {/* form for all screens */}
           <div className="flex-1 h-full ">
             <ShippingForm />
-            <FlutterwaveForm/>
           </div>
           {/* desktop */}
           <div className="flex-1 hidden lg:block bg-white rounded-lg p-2 lg:px-6">
@@ -142,7 +139,7 @@ const Checkout = () => {
                   ))}
                   <div className="flex justify-between font-semibold">
                     <p className="">Total:</p>
-                    <p className="">₦{total.toFixed(2)}</p>
+                    <p className="">₦{total}</p>
                   </div>
                 </div>
               )}
