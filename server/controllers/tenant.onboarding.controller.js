@@ -5,7 +5,6 @@ import { errorHandler } from "../utils/error.js";
 export const tenantOnboarding = async (req, res, next) => {
   const tenantInfo = req.body;
   
-
   try {
     const { userId } = req.user;
     const user = await User.findById(userId);

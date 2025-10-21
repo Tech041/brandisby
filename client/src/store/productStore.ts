@@ -24,6 +24,9 @@ const mockApiCall = (): Promise<Product[]> =>
           image: "/images/image1.jpeg",
           category: "men",
           tenant: "fleurdevie",
+          quantity: 30,
+          discount: 0,
+          isStock: true,
           date: 1716634345448,
         },
         {
@@ -35,6 +38,9 @@ const mockApiCall = (): Promise<Product[]> =>
           image: "/images/image2.jpeg",
           category: "women",
           tenant: "serac",
+          quantity: 30,
+          discount: 0,
+          isStock: true,
           date: 1716634345448,
         },
         {
@@ -46,6 +52,9 @@ const mockApiCall = (): Promise<Product[]> =>
           image: "/images/image3.jpeg",
           category: "men",
           tenant: "fleurdevie",
+          quantity: 30,
+          discount: 0,
+          isStock: true,
           date: 1716634345448,
         },
         {
@@ -57,6 +66,9 @@ const mockApiCall = (): Promise<Product[]> =>
           image: "/images/image4.jpeg",
           category: "child",
           tenant: "fleurdevie",
+          quantity: 30,
+          discount: 0,
+          isStock: true,
           date: 1716634345448,
         },
         {
@@ -68,6 +80,9 @@ const mockApiCall = (): Promise<Product[]> =>
           image: "/images/image5.jpeg",
           category: "men",
           tenant: "fleurdevie",
+          quantity: 30,
+          discount: 0,
+          isStock: true,
           date: 1716634345448,
         },
         {
@@ -79,6 +94,9 @@ const mockApiCall = (): Promise<Product[]> =>
           image: "/images/image6.jpeg",
           category: "men",
           tenant: "serac",
+          quantity: 30,
+          discount: 0,
+          isStock: true,
           date: 1716634345448,
         },
         {
@@ -90,6 +108,9 @@ const mockApiCall = (): Promise<Product[]> =>
           image: "/images/product.jpeg",
           category: "babies",
           tenant: "serac",
+          quantity: 30,
+          discount: 0,
+          isStock: true,
           date: 1716634345448,
         },
       ]);
