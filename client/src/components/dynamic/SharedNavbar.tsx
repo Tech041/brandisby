@@ -1,5 +1,5 @@
 import Container from "../Container";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCartSideBarStore, useUiStore } from "../../store/UiStore";
 import Socials from "../Socials";
 import { tenantNavLinks } from "../../utils/navLinks";
@@ -11,10 +11,10 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineClose } from "react-icons/md";
 import { useCartStore } from "../../store/cartStore";
 import CartSideBar from "../../pages/dynamic/CartSideBar";
+import { useTenantStore } from "../../store/tenantSore";
 
 const SharedNavbar = () => {
-  const { tenant } = useParams();
-
+   const { tenant } = useTenantStore();
   const { isMobileNavOpen, toggleMobileNav } = useUiStore();
   const { isCartSideBarOpen, toggleCartSideBar } = useCartSideBarStore();
 
@@ -24,6 +24,7 @@ const SharedNavbar = () => {
     0
   );
 
+if (!tenant) return null;
   return (
     <header
       className={`w-full h-[100px] bg-white text-primary-100 border-b border-dotted border-b-gray-200  z-40 ${
@@ -46,10 +47,10 @@ const SharedNavbar = () => {
               <div className="w-[200px]  rounded-md overflow-hidden">
                 <Link
                   className="w-full h-full flex items-center"
-                  to={`${tenant === "fleurdevie" ? "/fleurdevie" : "/serac"}`}
+                  to={`/${tenant.tenant_name}`}
                 >
                   <span className="text-4xl font-semibold text-primary-100">
-                    {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
+                    {tenant.brand }
                   </span>
                 </Link>
               </div>
@@ -134,10 +135,10 @@ const SharedNavbar = () => {
               <div className="w-[100px] h-[100px] rounded-md overflow-hidden">
                 <Link
                   className="w-full h-full flex flex-col justify-center"
-                  to={`${tenant === "fleurdevie" ? "/fleurdevie" : "/serac"}`}
+                  to={`/${tenant.tenant_name}`}
                 >
                   <span className="text-xl font-semibold text-center text-primary-100">
-                    {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
+                     {tenant.brand }
                   </span>
                 </Link>
               </div>

@@ -6,10 +6,10 @@ import { FiTwitter } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import Container from "../Container";
 import Socials from "../Socials";
-import { useParams } from "react-router-dom";
+import { useTenantStore } from "../../store/tenantSore";
 
 const SharedFooter = () => {
-  const { tenant } = useParams();
+  const { tenant } = useTenantStore();
 
   return (
     <footer className="w-full h-full bg-primary-200 text-primary-100 pt-5">
@@ -47,7 +47,7 @@ const SharedFooter = () => {
             {/* middle */}
             <div className="flex-1 pb-2 hidden lg:block">
               <h2 className="text-primary-100 text-lg md:text-3xl md:text-center pt-4 pb-2 uppercase ">
-                {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
+                {tenant?.brand}
               </h2>
               <div className="flex-1 flex  md:justify-center gap-4 pb-4 pt-5 ">
                 <Socials path="">
@@ -70,7 +70,7 @@ const SharedFooter = () => {
 
             <div className="flex-1 pb-2 lg:hidden">
               <h2 className="text-primary-100   text-3xl text-center pt-4 pb-2 uppercase ">
-                {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
+                {tenant?.brand}
               </h2>
               <div className=" flex justify-center gap-4 pb-4 pt-5 ">
                 <Socials path="">
@@ -106,8 +106,7 @@ const SharedFooter = () => {
           <div className="">
             <p className="text-sm md:text-lg  text-center font-light">
               &copy;
-              {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}[
-              {new Date().getFullYear()}] . All Rights Reserved.{" "}
+              {tenant?.brand}[{new Date().getFullYear()}] . All Rights Reserved.{" "}
             </p>
           </div>
         </div>
