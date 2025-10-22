@@ -13,7 +13,8 @@ type FormData = z.infer<typeof onboardingSchema>;
 
 const Onboarding = () => {
   const [loading, setLoading] = useState(false);
-  const { setTenant, setMessage } = useTenantStore();
+  const { setTenant, setMessage, fetchTenants } = useTenantStore();
+
   const navigate = useNavigate();
   const {
     register,
@@ -29,7 +30,16 @@ const Onboarding = () => {
       setLoading(true);
       const res = await apiRequest.post("/tenant-onboarding", data);
       if (res.data.success) {
-        navigate(`/${res.data.tenant.brand}/dashboard`);
+        fetchTenants();
+        const rawBrand = res.data.tenant.brand;
+        const slug = rawBrand
+          .toLowerCase()
+          .trim()
+          .replace(/\s+/g, "-") // Replace spaces with hyphens
+          .replace(/[^\w-]+/g, "") // Remove non-word characters (no need to escape `-` here)
+          .replace(/--+/g, "-"); // Replace multiple hyphens with one
+
+        navigate(`/${slug}/dashboard`);
         reset();
         setMessage(res.data.message);
         setTenant(res.data.tenant);

@@ -67,25 +67,25 @@ const CartSideBar = () => {
                   onChange={() => setIsChecked(!isChecked)}
                   className="blue"
                 />
-                <span className="text-nowrap">Confirm checkout</span>
+                <span className="text-nowrap">Confirm order</span>
               </label>
 
               <button
                 onClick={handleCheckout}
                 disabled={!isChecked}
-                className={`w-full py-1 sm:py-2 lg:py-3 px-4  uppercase  rounded-full font-semibold transition-colors cursor-pointer  ${
+                className={`w-full py-1 sm:py-2 lg:py-3 px-4  uppercase  rounded-xl font-semibold transition-colors cursor-pointer  ${
                   isChecked
                     ? " text-black border border-black "
                     : "text-gray-400 cursor-not-allowed border border-gray-300"
                 }`}
               >
-                Checkout
+                Order
               </button>
             </div>
             <div className="w-full mt-1 md:mt-5">
               <button
                 onClick={handleNavigateToCartPage}
-                className={`w-full py-1 sm:py-2 lg:py-3 px-4 bg-black uppercase text-white hover:bg-black/50  border border-gray-300 rounded-full font-semibold transition-colors cursor-pointer 
+                className={`w-full py-1 sm:py-2 lg:py-3 px-4 bg-black uppercase text-white hover:bg-black/50  border border-gray-300 rounded-xl font-semibold transition-colors cursor-pointer 
               
             `}
               >

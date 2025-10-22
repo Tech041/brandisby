@@ -4,15 +4,28 @@ import { errorHandler } from "../utils/error.js";
 
 export const tenantOnboarding = async (req, res, next) => {
   const tenantInfo = req.body;
-  
+
+  const rawBrand = req.body.brand;
+  const slug = rawBrand
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+    .replace(/[^\w-]+/g, "") // Remove non-word characters (no need to escape `-` here)
+    .replace(/--+/g, "-");
+
   try {
     const { userId } = req.user;
     const user = await User.findById(userId);
     if (!user) {
       return next(errorHandler(401, "Register before creating store"));
     }
-    const tenant = await Tenant.create({ ...tenantInfo, creator: user._id });
-    user.tenant = tenant._id;
+    const tenant = await Tenant.create({
+      ...tenantInfo,
+      tenant_name: slug, // use the slug here
+      creator: user._id,
+    });
+
+    user.tenant = tenant.tenant_name;
     await user.save();
     return res.status(201).json({
       success: true,
@@ -24,3 +37,22 @@ export const tenantOnboarding = async (req, res, next) => {
     return next(errorHandler(500, "Error onboarding tenant"));
   }
 };
+
+// Fetching all tenants
+export const fetchAllTenants = async (req, res, next) => {
+  try {
+    const tenants = await Tenant.find({}, "tenant_name");
+
+    // Extract only the tenant_name values
+    const tenantNames = tenants.map((t) => t.tenant_name);
+
+    return res.status(200).json({
+      success: true,
+      count: tenantNames.length,
+      tenants: tenantNames,
+    });
+  } catch (error) {
+    next(errorHandler(400, error.message || "Error fetching tenants"));
+  }
+};
+

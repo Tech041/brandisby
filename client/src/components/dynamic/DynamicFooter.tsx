@@ -6,11 +6,12 @@ import { FiTwitter } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import Container from "../Container";
 import Socials from "../Socials";
-import { useParams } from "react-router-dom";
+import { useTenantStore } from "../../store/tenantSore";
+
 
 const DynamicFooter = () => {
-  const { tenant } = useParams();
-
+  const { tenant } = useTenantStore();
+    if (!tenant) return null;
   return (
     <footer className="w-full h-full bg-white text-black pt-5">
       <Container>
@@ -47,7 +48,7 @@ const DynamicFooter = () => {
             {/* middle */}
             <div className="flex-1 pb-2 hidden lg:block">
               <h2 className="text-black text-lg md:text-3xl md:text-center pt-4 pb-2 uppercase ">
-                {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
+                {tenant.brand}
               </h2>
               <div className="flex-1 flex  md:justify-center gap-4 pb-4 pt-5 ">
                 <Socials path="">
@@ -70,7 +71,7 @@ const DynamicFooter = () => {
 
             <div className="flex-1 pb-2 lg:hidden">
               <h2 className="text-black   text-3xl text-center pt-4 pb-2 uppercase ">
-                {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
+                {tenant.brand}
               </h2>
               <div className=" flex justify-center gap-4 pb-4 pt-5 ">
                 <Socials path="">
@@ -106,7 +107,7 @@ const DynamicFooter = () => {
           <div className="">
             <p className="text-sm md:text-lg  text-center font-light">
               &copy;
-              {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}[
+              {tenant.brand}[
               {new Date().getFullYear()}] . All Rights Reserved.{" "}
             </p>
           </div>

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { useTenantStore } from "./store/tenantSore";
 
 // Dynamic import or code splitting
 const Home = React.lazy(() => import("./pages/brandisby/Home"));
@@ -37,6 +38,11 @@ const DynamicNotFound = React.lazy(
 const NotFound = React.lazy(() => import("./pages/brandisby/NotFound"));
 
 const App = () => {
+  const fetchTenants = useTenantStore((state) => state.fetchTenants);
+  useEffect(() => {
+    fetchTenants(); // Fetch once when app starts
+  }, [fetchTenants]);
+
   return (
     <div className="w-full h-full overflow-x-hidden">
       <ToastContainer />

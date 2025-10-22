@@ -18,7 +18,7 @@ const CartSideBarItem = ({
   remove,
 }: CartProp) => {
   return (
-    <div className="w-full h-full flex pb-2">
+    <div className="w-full h-full flex pb-2 px-3">
       <div className=" h-[120px] w-full flex border-b border-b-gray-400">
         <div className=" flex-1 h-full">
           <img src={src} alt={alt} className="w-full h-full object-contain" />

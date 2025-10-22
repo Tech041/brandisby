@@ -4,10 +4,13 @@ const tenantSchema = new Schema({
   brand: {
     type: String,
     required: true,
-    default: null,
     unique: true,
   },
-
+  tenant_name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   logo: {
     type: String,
     required: true,

@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import { string } from "zod";
 
 const userSchema = new Schema(
   {
@@ -23,19 +22,18 @@ const userSchema = new Schema(
       type: String,
       enum: ["admin", "seller", "user"],
       default: "user",
-      required: true,
+    
     },
     userCart: {
       type: Object,
       default: {},
     },
     tenant: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Tenant",
+      type: String,
       default: null,
     },
     refresh_token: {
-      type: string,
+      type: String,
       default: null,
     },
   },

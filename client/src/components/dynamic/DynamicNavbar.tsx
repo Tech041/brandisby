@@ -1,16 +1,18 @@
 import Container from "../Container";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useUiStore } from "../../store/UiStore";
 import Socials from "../Socials";
 import { FaInstagram } from "react-icons/fa6";
 import { FiTwitter } from "react-icons/fi";
 import { tenantNavLinks } from "../../utils/navLinks";
-import {  FaUserAlt } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
+import { useTenantStore } from "../../store/tenantSore";
 
 const DynamicNavbar = () => {
-  const { tenant } = useParams();
-
   const { isMobileNavOpen, toggleMobileNav } = useUiStore();
+  const { tenant } = useTenantStore();
+  if (!tenant) return null;
+
   return (
     <header
       className={`w-full h-[150px] text-black  z-50 ${
@@ -25,15 +27,10 @@ const DynamicNavbar = () => {
             <div className="w-[200px] h-[120px] rounded-md overflow-hidden">
               <Link
                 className="w-full h-full flex items-center"
-                to={`${tenant === "fleurdevie" ? "/fleurdevie" : "/serac"}`}
+                to={`/${tenant.tenant_name}`}
               >
-                {/* <img
-                  src="/images/fleur_logo.webp"
-                  className="w-full h-full object-cover"
-                  alt="logo"
-                /> */}
                 <span className="text-4xl font-semibold text-gray-900">
-                  {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
+                  {tenant.brand}
                 </span>
               </Link>
             </div>
@@ -59,11 +56,16 @@ const DynamicNavbar = () => {
               <div className="relative group">
                 <li className="">
                   <Socials path="">
-                    < FaUserAlt  size={30} color="black" />
+                    <FaUserAlt size={30} color="black" />
                   </Socials>
                 </li>
                 <div className="absolute hidden group-hover:block bg-gray-50 text-black pt-4 px-2 rounded">
-                  <Link className="text-nowrap text-gray-700" to={`/${tenant}/sign-up`}>Sign Up</Link>
+                  <Link
+                    className="text-nowrap text-gray-700"
+                    to={`/${tenant.tenant_name}/sign-up`}
+                  >
+                    Sign Up
+                  </Link>
                 </div>
               </div>
             </ul>
@@ -76,19 +78,10 @@ const DynamicNavbar = () => {
               <div className="w-[100px] h-[100px] rounded-md overflow-hidden">
                 <Link
                   className="w-full h-full flex flex-col justify-center"
-                  to={`${tenant === "fleurdevie" ? "/fleurdevie" : "/serac"}`}
+                  to={`/${tenant}`}
                 >
-                  <img
-                    src={`${
-                      tenant === "fleurdevie"
-                        ? "/images/fleur_logo.webp"
-                        : "/images/serac_logo.webp"
-                    }`}
-                    className="w-full h-[30px] object-cover"
-                    alt="logo"
-                  />
                   <span className="text-sm text-center text-gray-900">
-                    {`${tenant === "fleurdevie" ? "Fleurdevie" : "Serac"}`}
+                    {tenant.brand}
                   </span>
                 </Link>
               </div>
@@ -117,15 +110,7 @@ const DynamicNavbar = () => {
           >
             <div className="w-[100px] h-[50px] rounded-md overflow-hidden mt-10">
               <Link to={"/"}>
-                <img
-                  src={`${
-                    tenant === "fleurdevie"
-                      ? "/images/fleur_logo.webp"
-                      : "/images/serac_logo.webp"
-                  }`}
-                  className="w-full h-full object-cover"
-                  alt="logo"
-                />
+                <span className="">{tenant.logo}</span>
               </Link>
             </div>
             <ul className=" h-screen flex flex-col  items-center justify-center gap-4 ">
@@ -138,33 +123,6 @@ const DynamicNavbar = () => {
                 </li>
               ))}
             </ul>
-            {/* mobile socials */}
-            {/* <div className="flex items-center gap-5">
-                        <a href={navPaths.linkedin} className="">
-                          <Image
-                            src={"/icons/linkedin2.png"}
-                            width={24}
-                            height={24}
-                            alt="linkedin_icon"
-                          />
-                        </a>
-                        <a href={navPaths.facebook} className="">
-                          <Image
-                            src={"/icons/facebook2.png"}
-                            width={24}
-                            height={24}
-                            alt="facebook_icon"
-                          />
-                        </a>
-                        <a href={navPaths.instagram} className="">
-                          <Image
-                            src={"/icons/instagram2.png"}
-                            width={24}
-                            height={24}
-                            alt="instagram_icon"
-                          />
-                        </a>
-                      </div> */}
           </nav>
         </div>
       </Container>

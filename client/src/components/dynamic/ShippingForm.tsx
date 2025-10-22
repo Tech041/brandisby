@@ -65,7 +65,7 @@ const ShippingForm = () => {
       <div className="flex justify-between">
         <p className="text-base md:text-xl font-semibold text-black">Contact</p>
         <p>
-          <Link className="underline" to={"#"}>
+          <Link className="underline text-blue-500" to={`/${tenant}/sign-in`}>
             Sign In
           </Link>
         </p>
@@ -145,10 +145,10 @@ const ShippingForm = () => {
       {/* Submit */}
       <div className="w-full mt-2">
         <button
-          className="text-white bg-green-600 px-4 py-3 w-full rounded-full cursor-pointer"
+          className="text-white bg-black hover:bg-black/50 px-4 py-3 w-full rounded-xl cursor-pointer"
           type="submit"
         >
-          Pay Now
+          Check Out
         </button>
       </div>
     </form>

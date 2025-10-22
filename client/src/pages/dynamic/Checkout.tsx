@@ -47,7 +47,7 @@ const Checkout = () => {
                   )}
                 </p>
               </div>
-              <div className="text-base font-bold text-gray-700">
+              <div className="text-base font-bold text-red-500">
                 ₦{total.toFixed(2)}
               </div>
             </div>
@@ -84,7 +84,7 @@ const Checkout = () => {
                     ))}
                     <div className="flex justify-between font-semibold">
                       <p className="">Total:</p>
-                      <p className="">₦{total.toFixed(2)}</p>
+                      <p className="text-red-500">₦{total.toFixed(2)}</p>
                     </div>
                   </div>
                 )}
@@ -104,7 +104,7 @@ const Checkout = () => {
                   Order Summary
                 </h2>
               </div>
-              <div className="text-base font-bold text-gray-700">
+              <div className="text-base font-bold text-red-500">
                 ₦{total.toFixed(2)}
               </div>
             </div>
@@ -139,7 +139,7 @@ const Checkout = () => {
                   ))}
                   <div className="flex justify-between font-semibold">
                     <p className="">Total:</p>
-                    <p className="">₦{total}</p>
+                    <p className="text-red-500">₦{total}</p>
                   </div>
                 </div>
               )}
