@@ -1,7 +1,8 @@
 import { errorHandler } from "../utils/error.js";
 
 export const tenantSeparator = (req, res, next) => {
-  const { tenant } = req.cookies;
+  const tenant = req.headers["x-tenant"];
+
   try {
     if (!tenant) {
       throw new Error("No tenant found");

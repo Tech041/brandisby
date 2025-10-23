@@ -6,10 +6,13 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/user.auth.route.js";
 import tenantRouter from "./routes/tenant.onboarding.route.js";
+import connectCloudinary from "./config/cloudinary.js";
+import productRouter from "./routes/product.route.js";
 
 const app = express();
 // DB connection
 connectDB();
+connectCloudinary();
 const allowedOrigin = [process.env.LOCAL_HOST, process.env.CLIENT_URL];
 
 // Middlewares
@@ -29,6 +32,7 @@ app.use(helmet());
 // Routes
 app.use("/api", authRouter);
 app.use("/api", tenantRouter);
+app.use("/api", productRouter);
 app.get("/", (req, res) => {
   res.send("API WORKING");
 });

@@ -56,3 +56,15 @@ export const fetchAllTenants = async (req, res, next) => {
   }
 };
 
+export const getTenantBySlug = async (req, res, next) => {
+  try {
+    const { slug } = req.params;
+    const tenant = await Tenant.findOne({ tenant_name: slug });
+
+    if (!tenant) return res.status(404).json({ error: "Tenant not found" });
+
+    return res.status(200).json({ tenant });
+  } catch (error) {
+    return next(errorHandler(404, error.message));
+  }
+};

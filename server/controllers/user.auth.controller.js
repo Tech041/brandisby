@@ -91,11 +91,13 @@ export const loginUser = async (req, res, next) => {
     const access_token = generateAccessToken({
       userId: user._id,
       userRole: user.role,
+      tenant: user.tenant,
     });
 
     const refresh_token = generateAccessToken({
       userId: user._id,
       userRole: user.role,
+      tenant: user.tenant,
     });
 
     res.cookie("access_token", access_token, {
