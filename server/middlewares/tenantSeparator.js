@@ -2,7 +2,6 @@ import { errorHandler } from "../utils/error.js";
 
 export const tenantSeparator = (req, res, next) => {
   const tenant = req.headers["x-tenant"];
-  console.log("tenant is", tenant);
 
   try {
     if (!tenant) {

@@ -1,9 +1,11 @@
 import { TbMathGreater } from "react-icons/tb";
 import Container from "../Container";
 import { Link, useParams } from "react-router-dom";
+import { useAuthStore } from "../../store/authStore";
 
 const ProductBanner = () => {
   const { tenant } = useParams();
+  const tenantName = useAuthStore((state) => state.user?.tenant);
 
   return (
     <section className="w-full bg-gray-200">
@@ -18,7 +20,11 @@ const ProductBanner = () => {
               <span className="">
                 <TbMathGreater size={10} />{" "}
               </span>
-              <span className="text-gray-400">Products</span>
+              {tenantName === tenant ? (
+                <Link to={`/${tenantName}/dashboard`}>Dashboard</Link>
+              ) : (
+                <span className="text-gray-400">Products</span>
+              )}{" "}
             </div>
           </div>
           <div className=" flex-[3] flex items-center justify-center sm:justify-end">

@@ -34,7 +34,11 @@ const SignIn = () => {
         setUser(res.data.user);
         setMessage(res.data.message);
         toast.success(res.data.message);
-        navigate("/tenant-onboarding");
+        navigate(
+          res.data.user.tenant === null
+            ? "/tenant-onboarding"
+            : `/${res.data.user.tenant}/dashboard`
+        );
       }
     } catch (err) {
       toast.error("Error signing In");
