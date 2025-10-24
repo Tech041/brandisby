@@ -41,7 +41,7 @@ const App = () => {
   const fetchTenants = useTenantStore((state) => state.fetchTenants);
   useEffect(() => {
     fetchTenants(); // Fetch once when app starts
-  }, [fetchTenants]);
+  }, []);
 
   return (
     <div className="w-full h-full overflow-x-hidden">

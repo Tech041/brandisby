@@ -10,7 +10,7 @@ const productSchema = new Schema(
     category: { type: String, required: true },
     quantity: { type: Number, required: true },
     discount: { type: Number, default: 0 },
-    tenant: { type: mongoose.Types.ObjectId, ref: "Tenant", required: true },
+    tenant: { type: String, required: true },
     inStock: { type: Boolean, default: true },
   },
   { timestamps: true }

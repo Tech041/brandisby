@@ -1,21 +1,22 @@
-import Busboy from "busboy";
+import busboy from "busboy"; // ✅ Correct import for modern Busboy
 import sharp from "sharp";
 import { v2 as cloudinary } from "cloudinary";
 import streamifier from "streamifier";
 import Product from "../models/product.model.js";
-import { validateRequest } from "../middlewares/validator.js";
 import { errorHandler } from "../utils/error.js";
+import { serverProductSchema } from "../validators/product.js";
+import { success } from "zod";
 
 export const productUpload = (req, res, next) => {
-  const busboy = new Busboy({ headers: req.headers });
+  const bb = busboy({ headers: req.headers });
   const formData = {};
   let imageBuffer = null;
 
-  busboy.on("field", (fieldname, val) => {
+  bb.on("field", (fieldname, val) => {
     formData[fieldname] = val;
   });
 
-  busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
+  bb.on("file", (fieldname, file, filename, encoding, mimetype) => {
     const chunks = [];
     file.on("data", (chunk) => chunks.push(chunk));
     file.on("end", () => {
@@ -23,9 +24,9 @@ export const productUpload = (req, res, next) => {
     });
   });
 
-  busboy.on("finish", async () => {
+  bb.on("finish", async () => {
     try {
-      const parsedData = validateRequest.parse({
+      const parsedData = serverProductSchema.parse({
         ...formData,
         price: Number(formData.price),
         quantity: Number(formData.quantity),
@@ -44,7 +45,7 @@ export const productUpload = (req, res, next) => {
         new Promise((resolve, reject) => {
           const stream = cloudinary.uploader.upload_stream(
             {
-              folder: `products/${req.user.tenant}`,
+              folder: `products/${req.tenant}`,
               format: "webp",
             },
             (error, result) => {
@@ -61,20 +62,40 @@ export const productUpload = (req, res, next) => {
         ...parsedData,
         image: result.secure_url,
         publicId: result.public_id,
-        tenant: req.user.tenant,
+        tenant: req.tenant,
       });
 
       await product.save();
 
       return res.status(201).json({
+        success: true,
         message: "Product uploaded successfully",
         product,
       });
     } catch (error) {
       console.error("Upload error:", error);
-      return next(errorHandler(400, "Error uploading product"));
+      return next(errorHandler(500, "Internal server error"));
     }
   });
 
-  req.pipe(busboy);
+  req.pipe(bb);
+};
+
+// fetch products
+
+export const fetchProducts = async (req, res, next) => {
+  const tenantId = req.tenant;
+  try {
+    const allProducts = await Product.find({ tenant: tenantId });
+    if (allProducts.length === 0) {
+      return next(errorHandler(400), "No products under this tenant");
+    }
+    return res.status(200).json({
+      success: true,
+      message: "Products fetched",
+      allProducts,
+    });
+  } catch (error) {
+    next(errorHandler(500), "Internal server error");
+  }
 };

@@ -30,7 +30,7 @@ const DynamicNavbar = () => {
                 to={`/${tenant.tenant_name}`}
               >
                 <span className="text-4xl font-semibold text-gray-900">
-                  {tenant.brand}
+                  {tenant.logo}
                 </span>
               </Link>
             </div>
@@ -81,7 +81,7 @@ const DynamicNavbar = () => {
                   to={`/${tenant}`}
                 >
                   <span className="text-sm text-center text-gray-900">
-                    {tenant.brand}
+                    {tenant.logo}
                   </span>
                 </Link>
               </div>
