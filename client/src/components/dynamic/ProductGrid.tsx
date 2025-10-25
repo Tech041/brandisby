@@ -2,21 +2,18 @@ import { useEffect } from "react";
 import { useProductStore } from "../../store/productStore";
 import Container from "../Container";
 import ProductItem from "./ProductItem";
-import { useParams } from "react-router-dom";
-import { useCartStore } from "../../store/cartStore";
+import { useTenantStore } from "../../store/tenantSore";
 
 const ProductGrid = () => {
-  const { tenant } = useParams();
   const { isLoading, fetchProducts, products } = useProductStore();
-  const { setTenant } = useCartStore();
+  const tenantName = useTenantStore((state) => state.tenant?.tenant_name);
 
   useEffect(() => {
-    if (tenant) {
-      fetchProducts(tenant);
-      setTenant(tenant);
+    if (tenantName) {
+      fetchProducts(tenantName);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tenant]);
+  }, [tenantName]);
   return (
     <section className="w-full h-full">
       <Container>

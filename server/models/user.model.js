@@ -22,7 +22,6 @@ const userSchema = new Schema(
       type: String,
       enum: ["admin", "seller", "user"],
       default: "user",
-    
     },
     userCart: {
       type: Object,
@@ -40,5 +39,6 @@ const userSchema = new Schema(
   { minimize: false }
 );
 
+userSchema.index({ _id: 1, tenant: 1 });
 const User = mongoose.model("User", userSchema);
 export default User;

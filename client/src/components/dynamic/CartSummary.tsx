@@ -2,10 +2,10 @@ import { useState } from "react";
 
 interface CartSummaryProp {
   total: string;
-  onclick:()=>void
+  onclick: () => void;
 }
 
-const CartSummary = ({ total,onclick }: CartSummaryProp) => {
+const CartSummary = ({ total, onclick }: CartSummaryProp) => {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -25,11 +25,11 @@ const CartSummary = ({ total,onclick }: CartSummaryProp) => {
             onChange={() => setIsChecked(!isChecked)}
             className="blue"
           />
-          <span>Confirm checkout</span>
+          <span>Confirm order</span>
         </label>
 
         <button
-        onClick={onclick}
+          onClick={onclick}
           disabled={!isChecked}
           className={`py-3 px-4 rounded-full font-semibold transition-colors cursor-pointer ${
             isChecked
@@ -37,7 +37,7 @@ const CartSummary = ({ total,onclick }: CartSummaryProp) => {
               : "bg-gray-300 text-gray-500 cursor-not-allowed"
           }`}
         >
-          Proceed to checkout
+          Place Order
         </button>
       </div>
     </div>

@@ -1,22 +1,28 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   shippingSchema,
   type ShippingFormData,
 } from "../../schema/ShippingAndPayment";
 import { useCartStore } from "../../store/cartStore";
+import apiRequest from "../../utils/apiRequest";
+import { useAuthStore } from "../../store/authStore";
+import { useTenantStore } from "../../store/tenantSore";
+import { useState } from "react";
 
 const ShippingForm = () => {
   const navigate = useNavigate();
-  const { tenant } = useParams();
-
-  const { cart, clearCart } = useCartStore();
+  const userId = useAuthStore((state) => state.user?.userId);
+  const tenantName = useTenantStore((state) => state.tenant?.tenant_name);
+  const { cart, clearCart, setShippingForm, message } = useCartStore();
   const items = Object.values(cart);
   const total = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+
+  const [isVerifying, setIsVerifying] = useState(false);
 
   const {
     register,
@@ -26,29 +32,68 @@ const ShippingForm = () => {
     resolver: zodResolver(shippingSchema),
   });
 
+  const verifyPayment = async (reference: string, data: ShippingFormData) => {
+    try {
+      setIsVerifying(true);
+      const confirmRes = await apiRequest.post("/verify-payment", {
+        reference,
+        cart,
+        shippingForm: data,
+        tenant: tenantName,
+        message,
+        userId,
+        total,
+      });
+
+      setIsVerifying(false);
+
+      if (confirmRes.data.success) {
+        clearCart();
+        setShippingForm({
+          name: "",
+          email: "",
+          address: "",
+          city: "",
+          state: "",
+          country: "",
+        });
+        navigate(`/${tenantName}/payment-success`, {
+          state: {
+            items,
+            total,
+            reference,
+            orderId: confirmRes.data.orderId,
+          },
+        });
+      } else {
+        alert(
+          "Payment was successful, but confirmation failed. Please contact support."
+        );
+      }
+    } catch (err) {
+      setIsVerifying(false);
+      console.error("Checkout error:", err);
+      alert(
+        "Payment succeeded, but we couldn't verify it. Please try again or contact support."
+      );
+    }
+  };
+
   const onSubmit = (data: ShippingFormData) => {
-    console.log("Form submitted:", data);
+    setShippingForm(data);
+    const reference = new Date().getTime().toString();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handler = (window as any).PaystackPop.setup({
       key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
       email: data.email,
-      amount: total * 1000,
-      ref: new Date().getTime().toString(),
+      amount: total * 100,
+      ref: reference,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       callback: (response: any) => {
         console.log("Payment successful:", response);
-        // You can verify the transaction on your backend here
-        // I will call payment confirmation endpoint here, if it is confirmed, i will proceed to this response below
         if (response.status === "success") {
-          clearCart();
-          navigate(`/${tenant}/payment-success`, {
-            state: {
-              items,
-              total,
-              reference: response.reference,
-            },
-          });
+          verifyPayment(response.reference, data);
         }
       },
       onClose: () => {
@@ -61,11 +106,20 @@ const ShippingForm = () => {
 
   return (
     <form className="w-full h-full" onSubmit={handleSubmit(onSubmit)}>
+      {isVerifying && (
+        <div className="text-center text-blue-600 font-semibold mb-4">
+          Verifying payment, please wait...
+        </div>
+      )}
+
       {/* Contact Section */}
       <div className="flex justify-between">
         <p className="text-base md:text-xl font-semibold text-black">Contact</p>
         <p>
-          <Link className="underline text-blue-500" to={`/${tenant}/sign-in`}>
+          <Link
+            className="underline text-blue-500"
+            to={`/${tenantName}/sign-in`}
+          >
             Sign In
           </Link>
         </p>
@@ -83,7 +137,7 @@ const ShippingForm = () => {
       </div>
 
       {/* Delivery Section */}
-      <label className="">Delivery</label>
+      <label>Delivery</label>
       <div className="w-full my-2">
         <input
           type="text"
@@ -147,8 +201,9 @@ const ShippingForm = () => {
         <button
           className="text-white bg-black hover:bg-black/50 px-4 py-3 w-full rounded-xl cursor-pointer"
           type="submit"
+          disabled={isVerifying}
         >
-          Check Out
+          {isVerifying ? "Processing..." : "Check Out"}
         </button>
       </div>
     </form>

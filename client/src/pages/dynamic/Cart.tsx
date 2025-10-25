@@ -1,20 +1,24 @@
-import { useEffect } from "react";
 import Container from "../../components/Container";
 import { useCartStore } from "../../store/cartStore";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 import Button from "../../components/dynamic/Button";
 import CartSummary from "../../components/dynamic/CartSummary";
+import { useTenantStore } from "../../store/tenantSore";
 const style1 = "px-4 py-2 border-r border-r-gray-300";
 const style2 = "px-4 py-2 border border-gray-300";
 
 const Cart = () => {
-  const { tenant } = useParams();
+  const tenantName = useTenantStore((state) => state.tenant?.tenant_name);
   const navigate = useNavigate();
-
-  const { cart, updateQuantity, removeFromCart, setTenant, clearCart } =
-    useCartStore();
+  const {
+    cart,
+    updateQuantity,
+    removeFromCart,
+    clearCart,
+    setMessage,
+  } = useCartStore();
   const items = Object.values(cart);
 
   const totalBeforeDiscount = items.reduce(
@@ -22,15 +26,13 @@ const Cart = () => {
     0
   );
 
-  useEffect(() => {
-    if (tenant) {
-      setTenant(tenant);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tenant]);
+  const handleMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(e.target.value);
+  };
 
-  const handleCheckout = () => {
-    navigate(`/${tenant}/checkout`);
+  const handleCheckout = async () => {
+    navigate(`/${tenantName}/checkout`);
+  
   };
   const handleClearCart = () => {
     clearCart();
@@ -209,7 +211,7 @@ const Cart = () => {
                 />
               </div>
               <div className="w-full md:w-auto flex justify-end md:justify-start pr-6 md:pr-0">
-                <Link to={`/${tenant}/products`}>
+                <Link to={`/${tenantName}/products`}>
                   <Button
                     style="bg-black text-white text-nowrap hover:bg-white hover:border hover:border-black hover:text-black px-10  py-4 rounded-full  cursor-pointer uppercase"
                     text="Continue Shopping"
@@ -232,7 +234,8 @@ const Cart = () => {
                   Special instructions for seller
                 </label>
                 <textarea
-                  name=""
+                  onChange={handleMessage}
+                  name="message"
                   className="min-h-[200px] p-3 border border-gray-300 w-full"
                 ></textarea>
               </div>

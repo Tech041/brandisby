@@ -35,7 +35,6 @@ const ProductDetails = React.lazy(
 const DynamicNotFound = React.lazy(
   () => import("./pages/dynamic/DynamicNotFound")
 );
-const NotFound = React.lazy(() => import("./pages/brandisby/NotFound"));
 
 const App = () => {
   const fetchTenants = useTenantStore((state) => state.fetchTenants);
@@ -52,7 +51,6 @@ const App = () => {
         <Route path="/" element={<BrandisbyLayout />}>
           <Route index element={<Home />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="*" element={<NotFound />} />
           <Route path="login" element={<SignIn />} />
           <Route path="register" element={<SignUp />} />
           <Route path="tenant-onboarding" element={<Onboarding />} />

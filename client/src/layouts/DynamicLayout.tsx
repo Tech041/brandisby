@@ -22,7 +22,7 @@ const DynamicLayout = () => {
     validateTenant();
   }, [slug]);
 
-  if (tenantLoading|| validTenant === null) return <Spinner />;
+  if (tenantLoading || validTenant === null) return <Spinner />;
   if (!validTenant) return <DynamicNotFound />;
 
   return <Outlet />;

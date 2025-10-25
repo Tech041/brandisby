@@ -4,20 +4,43 @@ import { persist } from "zustand/middleware";
 import type { Product } from "../types/productTypes";
 import type { CartItem } from "../types/cartTypes";
 
+interface ShippingFormType {
+  name: string;
+  email: string;
+  address: string;
+  city: string;
+  state: string;
+  country: string;
+}
+
 interface CartState {
   cart: Record<string, CartItem>;
   tenant: string | null;
+  message: string | null;
+  shippingForm: ShippingFormType;
   setTenant: (tenant: string) => void;
   addToCart: (product: Product) => void;
   removeFromCart: (_id: string) => void;
   updateQuantity: (_id: string, quantity: number) => void;
   clearCart: () => void;
+  setMessage: (message: string) => void;
+  setShippingForm: (shippingForm: ShippingFormType) => void;
 }
 
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       cart: {},
+      shippingForm: {
+        name: "",
+        email: "",
+        address: "",
+        city: "",
+        state: "",
+        country: "",
+      },
+
+      message: null,
       tenant: null,
       setTenant: (newTenant) => {
         const { tenant, cart } = get();
@@ -29,7 +52,13 @@ export const useCartStore = create<CartState>()(
           set({ tenant: newTenant });
         }
       },
+      setMessage: (newMessage) => {
+        set({ message: newMessage });
+      },
 
+      setShippingForm: (newForm) => {
+        set({ shippingForm: newForm });
+      },
       addToCart: (product) => {
         const { tenant, cart } = get();
         if (tenant && tenant !== product.tenant) {

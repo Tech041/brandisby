@@ -8,6 +8,7 @@ import authRouter from "./routes/user.auth.route.js";
 import tenantRouter from "./routes/tenant.onboarding.route.js";
 import connectCloudinary from "./config/cloudinary.js";
 import productRouter from "./routes/product.route.js";
+import transactionRouter from "./routes/transaction.route.js";
 
 const app = express();
 // DB connection
@@ -23,8 +24,7 @@ app.use(
     origin: allowedOrigin,
     credentials: true,
     methods: ["GET", "POST", "DELETE", "PUT"],
-    allowedHeaders: ['Content-Type', 'Authorization', 'x-tenant']
-
+    allowedHeaders: ["Content-Type", "Authorization", "x-tenant"],
   })
 );
 
@@ -34,6 +34,8 @@ app.use(helmet());
 app.use("/api", authRouter);
 app.use("/api", tenantRouter);
 app.use("/api", productRouter);
+app.use("/api", transactionRouter);
+
 app.get("/", (req, res) => {
   res.send("API WORKING");
 });

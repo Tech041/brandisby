@@ -35,8 +35,7 @@ const transactionSchema = new Schema(
       type: String,
     },
     tenant: {
-      type: mongoose.Types.ObjectId,
-      ref: "Tenant",
+      type: String,
       required: true,
     },
   },

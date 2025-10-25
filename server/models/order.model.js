@@ -1,46 +1,28 @@
-import { Schema } from "mongoose";
-const orderSchema = new Schema(
-  {
-    userId: {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
-      required: true,
+import mongoose, { Schema } from "mongoose";
+const orderSchema = new Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  tenant: String,
+  items: [
+    {
+      productId: mongoose.Schema.Types.ObjectId,
+      name: String,
+      price: Number,
+      quantity: Number,
     },
-    items: [
-      {
-        product: { type: mongoose.Types.ObjectId, ref: "Product" },
-        name: String,
-        quantity: Number,
-        price: Number,
-      },
-    ],
-    amount: { type: Number, required: true },
-    address: { type: Object, required: true },
-    payment_method: { type: String, required: true, default: "Paystack" },
-    status: {
-      type: String,
-      enum: ["pending", "paid"],
-      default: "pending",
-    },
-
-    date: {
-      type: Date,
-      default: Date.now,
-    },
-    shipping_status: {
-      type: String,
-      enum: ["packaged", "shipped", "delivered"],
-      default: "packaged",
-    },
-    tenant: {
-      type: mongoose.Types.ObjectId,
-      ref: "Tenant",
-      required: true,
-    },
+  ],
+  shippingForm: {
+    name: String,
+    email: String,
+    address: String,
+    city: String,
+    state: String,
+    country: String,
   },
-  { timestamps: true }
-);
+  message: String,
+  reference: String,
+  total: Number,
+  status: { type: String, default: "pending" },
+});
 
-orderSchema.index({ tenant: 1, userId: 1 });
 const Order = mongoose.model("Order", orderSchema);
 export default Order;
